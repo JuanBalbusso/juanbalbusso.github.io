@@ -618,8 +618,10 @@ buildGallery('rag-gallery',ragSlides);
 
 // ── LIGHTBOX ──
 let lbG=[],lbI=0;
-function openLB(gid,idx){
-  lbG=gid==='ds-gallery'?dsSlides:paretoSlides;
+function openLB(gid, idx){
+  if(gid==='ds-gallery') lbG=dsSlides;
+  else if(gid==='pareto-gallery') lbG=paretoSlides;
+  else lbG=ragSlides;
   lbI=idx;
   updateLB();
   document.getElementById('lightbox').classList.add('open');
@@ -718,10 +720,10 @@ document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 <div class="lightbox" id="lightbox" onclick="if(event.target===this)closeLB()" style="position:fixed;inset:0;background:rgba(0,0,0,0.95);z-index:300;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.2s;">
   <style>.lightbox.open{opacity:1!important;pointer-events:all!important;}</style>
   <button onclick="closeLB()" style="position:absolute;top:1.5rem;right:1.5rem;color:#8a8278;font-family:var(--mono);font-size:1.25rem;cursor:pointer;background:none;border:none;transition:color 0.2s;" onmouseover="this.style.color='#e8621a'" onmouseout="this.style.color=''">✕</button>
-  <button onclick="navLB(-1)" style="position:absolute;top:50%;left:1.5rem;transform:translateY(-50%);font-family:var(--mono);font-size:1.8rem;color:#8a8278;cursor:pointer;background:rgba(0,0,0,0.5);border:0.5px solid rgba(255,255,255,0.07);padding:0.5rem 0.9rem;transition:color 0.2s;" onmouseover="this.style.color='#e8621a'" onmouseout="this.style.color=''">‹</button>
+  <button onclick="navLB(-1)" style="position:absolute;top:50%;left:1.5rem;transform:translateY(-50%);font-family:var(--mono);font-size:1.8rem;color:#e8621a;cursor:pointer;background:rgba(0,0,0,0.5);border:0.5px solid rgba(255,255,255,0.07);padding:0.5rem 0.9rem;">‹</button>
   <div id="lb-content" style="display:flex;align-items:center;justify-content:center;"></div>
   <div id="lb-counter" style="position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:11px;color:#6e6860;letter-spacing:0.1em;"></div>
-  <button onclick="navLB(1)" style="position:absolute;top:50%;right:1.5rem;transform:translateY(-50%);font-family:var(--mono);font-size:1.8rem;color:#8a8278;cursor:pointer;background:rgba(0,0,0,0.5);border:0.5px solid rgba(255,255,255,0.07);padding:0.5rem 0.9rem;transition:color 0.2s;" onmouseover="this.style.color='#e8621a'" onmouseout="this.style.color=''">›</button>
+  <button onclick="navLB(1)" style="position:absolute;top:50%;right:1.5rem;transform:translateY(-50%);font-family:var(--mono);font-size:1.8rem;color:#e8621a;cursor:pointer;background:rgba(0,0,0,0.5);border:0.5px solid rgba(255,255,255,0.07);padding:0.5rem 0.9rem;">›</button>
 </div>
 
 </body>
