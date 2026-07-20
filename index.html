@@ -181,6 +181,15 @@ h2{font-family:var(--serif);font-size:clamp(2rem,4vw,3rem);font-weight:700;line-
 .btn-modal-out{font-family:var(--mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-mid);background:transparent;border:0.5px solid var(--border-white);padding:0.6rem 1.25rem;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:0.4rem;transition:color 0.2s,border-color 0.2s;}
 .btn-modal-out:hover{color:var(--orange);border-color:var(--orange-dim);}
 
+/* Featured product buttons (JB AI Solutions + WhatsApp CTA) */
+.btn-jbai{font-family:var(--mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:#fff;background:linear-gradient(135deg,var(--orange),var(--orange-bright));border:1px solid var(--orange-bright);padding:0.55rem 1.15rem;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:0.4rem;transition:box-shadow 0.22s,transform 0.15s;box-shadow:0 0 0 1px rgba(232,98,26,0.35),0 0 18px rgba(232,98,26,0.35);}
+.btn-jbai:hover{box-shadow:0 0 0 1px rgba(255,122,48,0.6),0 0 26px rgba(232,98,26,0.6);transform:translateY(-1px);}
+.btn-jbai-modal{font-family:var(--mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:#fff;background:linear-gradient(135deg,var(--orange),var(--orange-bright));border:1px solid var(--orange-bright);padding:0.6rem 1.25rem;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:0.4rem;transition:box-shadow 0.22s,transform 0.15s;box-shadow:0 0 0 1px rgba(232,98,26,0.35),0 0 18px rgba(232,98,26,0.35);}
+.btn-jbai-modal:hover{box-shadow:0 0 0 1px rgba(255,122,48,0.6),0 0 26px rgba(232,98,26,0.6);transform:translateY(-1px);}
+.btn-whatsapp{font-family:var(--mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:#25d366;background:transparent;border:1px solid #25d366;padding:0.6rem 1.25rem;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:0.4rem;transition:background 0.22s,color 0.22s,box-shadow 0.22s;}
+.btn-whatsapp:hover{background:#25d366;color:#0d0d0d;box-shadow:0 0 20px rgba(37,211,102,0.45);}
+
+
 /* SKILLS */
 .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem;}
 .skill-group{padding:1.75rem;background:var(--bg2);border:0.5px solid var(--border-dim);transition:border-color 0.2s;}
@@ -365,6 +374,19 @@ footer span{color:var(--orange-dim);}
         <a class="btn-github" href="https://github.com/JuanBalbusso/insurellm-rag" target="_blank">⌥ GitHub</a>
       </div>
     </div>
+
+    <div class="project-card reveal">
+      <div class="project-num">04 / LLM Engineering</div>
+      <div class="project-title" data-i18n="p4.title">JB AI Agent — Bot de Calificación de Leads por WhatsApp</div>
+      <p class="project-desc" data-i18n="p4.desc">Bot de producción en uso real para JB AI Solutions: atiende consultas por WhatsApp, califica leads con un checklist dinámico según el tipo de proyecto, y notifica automáticamente con resumen estructurado. Incluye panel admin propio estilo CRM con actualizaciones en vivo.</p>
+      <div class="project-tags">
+        <span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">OpenAI GPT-5.6</span><span class="tag">Twilio</span><span class="tag">PostgreSQL</span><span class="tag">RAG</span>
+      </div>
+      <div class="project-actions">
+        <a class="btn-details" onclick="openModal('jbai')" style="cursor:pointer;" data-i18n="pl.details">Ver detalles →</a>
+        <a class="btn-jbai" href="https://juanbalbusso.github.io/jb-ai-solutions/" target="_blank" data-i18n="ml.jbai">⚡ JB AI Solutions</a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -448,6 +470,35 @@ footer span{color:var(--orange-dim);}
     <div class="slides-grid" id="rag-gallery"></div>
     <div style="margin-top:1.5rem;display:flex;gap:0.75rem;flex-wrap:wrap;">
       <a href="https://github.com/JuanBalbusso/insurellm-rag" target="_blank" class="btn-modal-solid" data-i18n="ml.github">↗ Ver en GitHub</a>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL JBAI -->
+<div class="modal-overlay" id="modal-jbai">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('jbai')">✕</button>
+    <span class="modal-tag" data-i18n="m.jbai.tag">04 / LLM Engineering · Producto propio · En producción</span>
+    <div class="modal-title" data-i18n="p4.title">JB AI Agent — Bot de Calificación de Leads por WhatsApp</div>
+    <div class="modal-sec" data-i18n="m.overview">Descripción del proyecto</div>
+    <p class="modal-text" data-i18n="m.jbai.ov">Sistema de producción (no un proyecto de curso) que atiende WhatsApp de JB AI Solutions 24/7: responde consultas usando RAG sobre una base de conocimiento propia, detecta el tipo de proyecto (chatbot/agente, Data Science, oferta laboral) y guía la conversación con un checklist específico hasta calificar el lead. Cuando confirma datos de contacto, arma y envía un resumen estructurado automáticamente, además de guardar cada conversación en Postgres para seguimiento.</p>
+    <p class="modal-text" data-i18n="m.jbai.ov2">Construí también un panel de administración propio (no uso ninguna herramienta de terceros) con diseño tipo WhatsApp Web/CRM: lista de conversaciones en vivo vía Server-Sent Events, respuesta manual, difusión de mensajes, favoritos, búsqueda y agenda de contactos.</p>
+    <div class="modal-sec" data-i18n="m.highlights">Puntos clave</div>
+    <ul class="modal-list">
+      <li data-i18n="m.jbai.h1">Backend en FastAPI + PostgreSQL, integrado con la API de WhatsApp Business (Twilio)</li>
+      <li data-i18n="m.jbai.h2">RAG con ChromaDB sobre base de conocimiento propia para respuestas grounded, no alucinadas</li>
+      <li data-i18n="m.jbai.h3">Extracción de estado estructurado por turno (Pydantic + structured outputs) para trackear el checklist sin perder el hilo en conversaciones largas</li>
+      <li data-i18n="m.jbai.h4">Manejo de audio (Whisper), imágenes y PDFs — el bot entiende lo que el cliente le mande</li>
+      <li data-i18n="m.jbai.h5">Resolví el desafío específico de WhatsApp Business API: mensajes iniciados por el negocio requieren Message Templates aprobados por Meta para esquivar la ventana de 24hs — diseñé el sistema para que esto no dependa de que el cliente escriba primero</li>
+      <li data-i18n="m.jbai.h6">Prompt engineering iterativo con testing adversarial real: guardrails contra jailbreaks progresivos y fuga de instrucciones internas, validados con conversaciones reales de prueba</li>
+      <li data-i18n="m.jbai.h7">Panel de administración propio con actualizaciones en tiempo real (SSE), sin depender de refrescos manuales</li>
+    </ul>
+    <div class="modal-sec" data-i18n="m.jbai.stack">Stack: Python, FastAPI, OpenAI API, Twilio, PostgreSQL, ChromaDB, Pydantic, Server-Sent Events, HTML/CSS/JS vanilla</div>
+    <div class="modal-sec" data-i18n="m.slides">Capturas del proyecto</div>
+    <div class="slides-grid" id="jbai-gallery"></div>
+    <div style="margin-top:1.5rem;display:flex;gap:0.75rem;flex-wrap:wrap;">
+      <a href="https://juanbalbusso.github.io/jb-ai-solutions/" target="_blank" class="btn-jbai-modal" data-i18n="ml.jbai">⚡ JB AI Solutions</a>
+      <a href="https://api.whatsapp.com/send/?phone=13512150324&text=Hola%21+Quiero+consultar+por+un+proyecto+de+IA+para+mi+negocio.&type=phone_number&app_absent=0" target="_blank" class="btn-whatsapp" data-i18n="ml.whatsapp">💬 Probar por WhatsApp</a>
     </div>
   </div>
 </div>
@@ -586,14 +637,44 @@ const T={es:{"nav.about":"Sobre mí","nav.projects":"Proyectos","nav.skills":"Sk
 "m.rag.h2":"Detección holística — identifica preguntas amplias y asegura que todos los documentos fuente estén representados",
 "m.rag.h3":"Loop de autoevaluación — un LLM judge puntúa cada respuesta del 1 al 5 y reintenta con feedback si la calidad es insuficiente",
 "m.rag.h4":"Evaluación rigurosa con 150 preguntas curadas usando MRR, nDCG y LLM-as-judge answer scoring",
-"m.rag.h5":"Stack: Python, OpenAI, ChromaDB, LiteLLM, Pydantic, Gradio, uv"},
+"m.rag.h5":"Stack: Python, OpenAI, ChromaDB, LiteLLM, Pydantic, Gradio, uv",
+"p4.title":"JB AI Agent — Bot de Calificación de Leads por WhatsApp",
+"p4.desc":"Bot de producción en uso real para JB AI Solutions: atiende consultas por WhatsApp, califica leads con un checklist dinámico según el tipo de proyecto, y notifica automáticamente con resumen estructurado. Incluye panel admin propio estilo CRM con actualizaciones en vivo.",
+"ml.jbai":"⚡ JB AI Solutions",
+"ml.whatsapp":"💬 Probar por WhatsApp",
+"m.jbai.tag":"04 / LLM Engineering · Producto propio · En producción",
+"m.jbai.ov":"Sistema de producción (no un proyecto de curso) que atiende WhatsApp de JB AI Solutions 24/7: responde consultas usando RAG sobre una base de conocimiento propia, detecta el tipo de proyecto (chatbot/agente, Data Science, oferta laboral) y guía la conversación con un checklist específico hasta calificar el lead. Cuando confirma datos de contacto, arma y envía un resumen estructurado automáticamente, además de guardar cada conversación en Postgres para seguimiento.",
+"m.jbai.ov2":"Construí también un panel de administración propio (no uso ninguna herramienta de terceros) con diseño tipo WhatsApp Web/CRM: lista de conversaciones en vivo vía Server-Sent Events, respuesta manual, difusión de mensajes, favoritos, búsqueda y agenda de contactos.",
+"m.jbai.h1":"Backend en FastAPI + PostgreSQL, integrado con la API de WhatsApp Business (Twilio)",
+"m.jbai.h2":"RAG con ChromaDB sobre base de conocimiento propia para respuestas grounded, no alucinadas",
+"m.jbai.h3":"Extracción de estado estructurado por turno (Pydantic + structured outputs) para trackear el checklist sin perder el hilo en conversaciones largas",
+"m.jbai.h4":"Manejo de audio (Whisper), imágenes y PDFs — el bot entiende lo que el cliente le mande",
+"m.jbai.h5":"Resolví el desafío específico de WhatsApp Business API: mensajes iniciados por el negocio requieren Message Templates aprobados por Meta para esquivar la ventana de 24hs — diseñé el sistema para que esto no dependa de que el cliente escriba primero",
+"m.jbai.h6":"Prompt engineering iterativo con testing adversarial real: guardrails contra jailbreaks progresivos y fuga de instrucciones internas, validados con conversaciones reales de prueba",
+"m.jbai.h7":"Panel de administración propio con actualizaciones en tiempo real (SSE), sin depender de refrescos manuales",
+"m.jbai.stack":"Stack: Python, FastAPI, OpenAI API, Twilio, PostgreSQL, ChromaDB, Pydantic, Server-Sent Events, HTML/CSS/JS vanilla"},
 en:{"nav.about":"About","nav.projects":"Projects","nav.skills":"Skills","nav.experience":"Experience","nav.contact":"Contact","hero.tag":"AI Engineer · Córdoba, Argentina","hero.subtitle":"Building intelligent systems","hero.desc":"AI Engineer at the intersection of LLM development, automation, and data science. Combining hands-on tooling with a systems-thinking approach to build solutions that actually work.","hero.cta1":"View projects","hero.cta2":"Get in touch","stats.english":"Cambridge English","stats.ds":"Data Science cert.","stats.ai":"Actively training","about.title":"About me","about.p1":"I'm a young professional based in Córdoba, Argentina, building a career at the intersection of <strong>AI automation, Data Science, and LLM engineering</strong>.","about.p2":"I completed the Data Science certification at <strong>Digital House</strong> (in partnership with Mercado Libre and Globant), and the <strong>Pareto Talent Bootcamp</strong> — an intensive 10-day program focused on working as an AI Executive Assistant with U.S.-based entrepreneurs.","about.p3":"Currently deepening my LLM engineering skills through active training. My goal is a differentiated profile combining all three areas to build solutions with real-world impact.","cv.label":"Resume","cv.es":"↗ CV Español","cv.en":"↗ CV English","dk.loc":"Location","dk.eng":"English","dk.focus":"Focus","dk.avail":"Available","dk.availval":"Remote & local opportunities","proj.title":"Projects","p1.title":"Airbnb Price Prediction — Buenos Aires","p1.desc":"End-to-end project on 23,729 real listings. EDA, feature engineering, comparison of 6 ML models + 3 neural network architectures. Best model: GBR with R²=0.6759.","p2.title":"Manus AI Webinar Launch — Pareto Bootcamp","p2.desc":"Complete 3-day webinar launch: conversion funnel in HighLevel, 3 automation workflows, 11 emails in the presenter's voice, 70+ tasks in ClickUp.","p3.title":"InsureLLM — RAG System","p3.desc":"Production-style RAG system for querying a private knowledge base in natural language. Features domain-aware query expansion, holistic detection, and a self-evaluation loop with LLM-as-judge.","pl.details":"See details →","m.overview":"Project overview","m.highlights":"Key highlights","m.slides":"Project slides","m.cert":"Certificate","m.certlabel":"Certificate of Completion · Pareto Talent · April 17, 2026","m.ds.ov":"Final project for the Digital House Data Science certification (Mercado Libre & Globant). Complete analysis on real Airbnb Buenos Aires data: 23,729 listings, 65 original features, 4-stage pipeline, 6 models evaluated.","m.ds.h1":"Full EDA: distributions, outliers, P99 capping, correlation heatmap","m.ds.h2":"Feature engineering: StandardScaler, 3-dataset join by listing_id, engineered variables","m.ds.h3":"ML: Ridge, Random Forest, GBR with GridSearchCV → R²=0.6759 (winner)","m.ds.h4":"Deep Learning: 3 MLP architectures with TensorFlow/Keras + KMeans clustering (k=3)","m.ds.h5":"Proactive identification of data leakage in avg_calendar_price (68.7% feature importance)","m.pt.ov":"Final project of the Pareto Talent Bootcamp (10 intensive days). Complete launch of a 3-day webinar for Nuno Tavares — strategy, funnel, CRM, automations, and marketing content, all executed end-to-end.","m.pt.h1":"3-step funnel in HighLevel: landing page (7 sections), VIP upsell ($97, 50 seats), thank-you page","m.pt.h2":"3 automation workflows: free registration, VIP purchase, remarketing with conditional logic","m.pt.h3":"11 emails in English, written in the presenter's voice, tested in live HighLevel environment","m.pt.h4":"ClickUp project management: 5 milestones, 11 lists, 70+ tasks with due dates and priorities","m.pt.h5":"3 ICPs developed, 3 Facebook ad mockups with persuasive copy by psychological profile","ml.github":"↗ View on GitHub","ml.pdf":"↓ Download slides","ml.pdf2":"↓ Download project","sk.title":"Skillset","sk.other":"Tools & Other","sk.remote":"Remote work","sk.docs":"Technical documentation","ex.title":"Experience & Education","ex.present":"Present","ex.pt.t":"AI Executive Assistant — 10-Day Bootcamp","ex.pt.l1":"Intensive program for working with U.S. entrepreneurs as an AI-powered EA","ex.pt.l2":"Final project: complete webinar launch with funnel, CRM, and email automation","ex.pt.l3":"Stack: HighLevel, ClickUp, Claude, Lovable, Vibe Coding, Zapier","ex.dh.t":"Data Science Certification","ex.dh.l1":"Mercado Libre & Globant partnership program","ex.dh.l2":"Supervised/unsupervised ML, neural networks, NLP, MLOps","ex.dh.l3":"Final project: Airbnb BsAs price prediction — 6 models evaluated","ex.ia.t":"AI in Programming — 22 hrs.","ex.ia.l1":"LLM integration into development workflows","ex.ia.l2":"GitHub Copilot, Claude, Cursor, Vercel, Replit, Bolt New","ex.ud.t":"Mastering Generative AI & LLMs","ex.ud.l1":"Frontier & open-source LLMs, RAG, QLoRA fine-tuning, autonomous agents","ex.ud.l2":"HuggingFace, LangChain, Gradio — building real AI products","ex.utn.t":"Systems Engineering","ex.utn.l1":"Strong foundation in mathematical analysis, algebra, logic, and programming","ct.title":"Let's build something.","ct.desc":"Open to remote opportunities and local projects in Argentina. Always happy to connect about AI, automation, or data engineering.","ct.copy":"copy",
 "m.rag.ov":"Production-style RAG system that lets users query a private insurance company knowledge base using natural language. Goes beyond a basic pipeline with three key improvements: domain-aware query expansion, holistic detection, and a self-evaluation loop with LLM-as-judge. Evaluated across 150 curated test questions using MRR, nDCG, and automatic answer scoring.",
 "m.rag.h1":"Domain-aware query expansion — solves the problem of LLMs misinterpreting domain-specific acronyms",
 "m.rag.h2":"Holistic detection — identifies broad questions and ensures all source documents are represented in context",
 "m.rag.h3":"Self-evaluation loop — an LLM judge scores each answer from 1 to 5 and triggers a retry with specific feedback if quality is insufficient",
 "m.rag.h4":"Rigorous evaluation across 150 curated questions using MRR, nDCG, and LLM-as-judge answer scoring",
-"m.rag.h5":"Stack: Python, OpenAI, ChromaDB, LiteLLM, Pydantic, Gradio, uv"}};
+"m.rag.h5":"Stack: Python, OpenAI, ChromaDB, LiteLLM, Pydantic, Gradio, uv",
+"p4.title":"JB AI Agent — WhatsApp Lead Qualification Bot",
+"p4.desc":"Production bot actively used by JB AI Solutions: handles WhatsApp inquiries, qualifies leads with a dynamic checklist based on project type, and automatically notifies with a structured summary. Includes a custom CRM-style admin panel with live updates.",
+"ml.jbai":"⚡ JB AI Solutions",
+"ml.whatsapp":"💬 Try it on WhatsApp",
+"m.jbai.tag":"04 / LLM Engineering · Own product · In production",
+"m.jbai.ov":"Production system (not a course project) that handles JB AI Solutions' WhatsApp 24/7: answers inquiries using RAG over a proprietary knowledge base, detects project type (chatbot/agent, Data Science, job offer), and guides the conversation with a specific checklist until the lead is qualified. Once contact details are confirmed, it automatically builds and sends a structured summary, while also logging every conversation in Postgres for follow-up.",
+"m.jbai.ov2":"I also built a custom admin panel (no third-party tools) with a WhatsApp Web/CRM-style design: live conversation list via Server-Sent Events, manual reply, broadcast messaging, favorites, search, and contact scheduling.",
+"m.jbai.h1":"FastAPI + PostgreSQL backend, integrated with the WhatsApp Business API (Twilio)",
+"m.jbai.h2":"RAG with ChromaDB over a proprietary knowledge base for grounded, non-hallucinated answers",
+"m.jbai.h3":"Per-turn structured state extraction (Pydantic + structured outputs) to track the checklist without losing context in long conversations",
+"m.jbai.h4":"Handles audio (Whisper), images, and PDFs — the bot understands whatever the client sends",
+"m.jbai.h5":"Solved a specific WhatsApp Business API challenge: business-initiated messages (notifications, summaries) require Meta-approved Message Templates to bypass the 24h window — designed the system so this doesn't depend on the client texting first",
+"m.jbai.h6":"Iterative prompt engineering with real adversarial testing: guardrails against progressive jailbreaks and internal instruction leakage, validated with real test conversations",
+"m.jbai.h7":"Custom admin panel with real-time updates (SSE), with no reliance on manual refreshes",
+"m.jbai.stack":"Stack: Python, FastAPI, OpenAI API, Twilio, PostgreSQL, ChromaDB, Pydantic, Server-Sent Events, vanilla HTML/CSS/JS"}};
 
 let lang='es';
 const langBtn=document.getElementById('langToggle');
@@ -655,13 +736,20 @@ const ragSlides=[
   {l:'Dashboard',         img:'slides/insurellm-rag/Dashboard.png'}
 ];
 buildGallery('rag-gallery',ragSlides);
+const jbaiSlides=[
+  {l:'Chat en vivo — WhatsApp', img:'slides/jb-ai-solutions/slide1.png'},
+  {l:'Conversación completa',   img:'slides/jb-ai-solutions/slide2.png'},
+  {l:'Lead calificado — Panel', img:'slides/jb-ai-solutions/slide3.png'}
+];
+buildGallery('jbai-gallery',jbaiSlides);
 
 // ── LIGHTBOX ──
 let lbG=[],lbI=0;
 function openLB(gid, idx){
   if(gid==='ds-gallery') lbG=dsSlides;
   else if(gid==='pareto-gallery') lbG=paretoSlides;
-  else lbG=ragSlides;
+  else if(gid==='rag-gallery') lbG=ragSlides;
+  else lbG=jbaiSlides;
   lbI=idx;
   updateLB();
   document.getElementById('lightbox').classList.add('open');
