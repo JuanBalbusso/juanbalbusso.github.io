@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<script>
+// Redirige los links viejos de GitHub Pages al dominio nuevo (solo en github.io, sin bucle)
+if (location.hostname === "juanbalbusso.github.io") {
+  location.replace("https://juanbalbusso.com" + location.pathname + location.search + location.hash);
+}
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="google-site-verification" content="AREubsP7kpSFJyejjGd3snSXc0B3ffV0cHh-QihOJWs" />
+<title>Juan Balbusso — AI Engineer</title>
+<meta name="description" content="Juan Balbusso, AI Engineer en Córdoba, Argentina. Construyo chatbots con IA, sistemas RAG, automatizaciones y soluciones de Data Science con impacto real.">
+<link rel="canonical" href="https://juanbalbusso.com/">
+<meta name="robots" content="index, follow">
+
+<!-- Favicon -->
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+<link rel="icon" href="favicon-16.png" type="image/png" sizes="16x16">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+<!-- Open Graph / redes sociales (LinkedIn, WhatsApp, etc.) -->
+<meta property="og:type" content="profile">
+<meta property="og:site_name" content="Juan Balbusso">
+<meta property="og:title" content="Juan Balbusso — AI Engineer">
+<meta property="og:description" content="AI Engineer en la intersección de LLMs, automatización con IA y ciencia de datos. Soluciones prácticas con impacto real.">
+<meta property="og:url" content="https://juanbalbusso.com/">
+<meta property="og:image" content="https://juanbalbusso.com/imagen_circular_recortada2.png">
+<meta property="og:locale" content="es_AR">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Juan Balbusso — AI Engineer">
+<meta name="twitter:description" content="AI Engineer en la intersección de LLMs, automatización con IA y ciencia de datos.">
+<meta name="twitter:image" content="https://juanbalbusso.com/imagen_circular_recortada2.png">
+
+<!-- Datos estructurados: le confirma a Google que esta página es sobre una persona real -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Juan Balbusso",
+  "url": "https://juanbalbusso.com/",
+  "image": "https://juanbalbusso.com/imagen_circular_recortada2.png",
+  "jobTitle": "AI Engineer",
+  "email": "mailto:jbalbusso@gmail.com",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Córdoba",
+    "addressCountry": "AR"
+  },
+  "sameAs": [
+    "https://www.linkedin.com/in/juan-balbusso-5847aa21b/",
+    "https://github.com/JuanBalbusso"
+  ]
+}
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=JetBrains+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#0d0d0d;--bg2:#141414;--bg3:#1a1a1a;
+  --orange:#e8621a;--orange-bright:#ff7a30;--orange-dim:#8a3a10;--orange-glow:rgba(232,98,26,0.18);
+  --text:#f0ede8;--text-mid:#c4bdb4;--text-muted:#8a8278;--text-dim:#454038;
+  --border:rgba(232,98,26,0.28);--border-dim:rgba(255,255,255,0.07);--border-white:rgba(255,255,255,0.12);
+  --mono:'JetBrains Mono',monospace;--serif:'Playfair Display',serif;--sans:'DM Sans',sans-serif;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:15px;line-height:1.7;overflow-x:hidden;}
+#canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;}
+
+/* NAV */
+nav{position:fixed;top:0;width:100%;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.1rem 2.5rem;background:rgba(13,13,13,0.92);backdrop-filter:blur(16px);border-bottom:0.5px solid rgba(232,98,26,0.15);}
+.nav-logo{font-family:var(--mono);font-size:13px;color:var(--orange);letter-spacing:0.08em;}
+.nav-links{display:flex;gap:1.75rem;list-style:none;align-items:center;}
+.nav-links a{font-family:var(--mono);font-size:13px;color:var(--text-mid);text-decoration:none;letter-spacing:0.07em;text-transform:uppercase;transition:color 0.2s;}
+.nav-links a:hover{color:var(--orange);}
+.lang-btn{font-family:var(--mono);font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--orange);background:transparent;border:0.5px solid var(--orange-dim);padding:0.35rem 0.85rem;cursor:pointer;transition:background 0.2s,border-color 0.2s;}
+.lang-btn:hover{background:var(--orange-glow);border-color:var(--orange);}
+
+/* SECTIONS */
+section{position:relative;z-index:1;padding:7rem 2.5rem 5rem;max-width:1100px;margin:0 auto;}
+
+/* HERO */
+#hero{min-height:100vh;display:grid;grid-template-columns:1fr 800px;gap:2rem;align-items:center;padding-top:7rem;padding-bottom:2rem;}
+.hero-left{display:flex;flex-direction:column;}
+.hero-tag{font-family:var(--mono);font-size:13px;color:var(--orange);letter-spacing:0.18em;text-transform:uppercase;margin-bottom:1.5rem;display:flex;align-items:center;gap:0.75rem;}
+.hero-tag::before{content:'';display:inline-block;width:32px;height:1px;background:var(--orange);}
+h1{font-family:var(--serif);font-size:clamp(3.2rem,7vw,6.5rem);font-weight:700;line-height:1;letter-spacing:-0.02em;color:var(--text);margin-bottom:0.25rem;}
+h1 span{color:var(--orange);}
+.hero-subtitle{font-family:var(--serif);font-size:clamp(1.3rem,2.2vw,2rem);font-weight:400;color:var(--orange);margin-bottom:1.75rem;font-style:italic;}
+.hero-desc{max-width:480px;color:var(--text-mid);font-size:15px;line-height:1.85;margin-bottom:2.5rem;}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;}
+
+/* Hero photo - no background, tall */
+.hero-right{display:flex;align-items:flex-end;justify-content:flex-end;position:relative;overflow:visible;padding-left:80px;}
+.hero-photo-wrap{position:relative;display:flex;align-items:flex-end;justify-content:center;}
+.hero-photo-wrap::before{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:260px;height:260px;background:radial-gradient(circle,rgba(232,98,26,0.2) 0%,transparent 70%);border-radius:50%;z-index:0;}
+.hero-photo-nobg{width:100%;max-width:999px;position:relative;z-index:1;filter:drop-shadow(0 20px 60px rgba(232,98,26,0.2));animation:floatY 6s ease-in-out infinite;}
+@keyframes floatY{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+
+
+
+.hero-stats{display:flex;gap:2.5rem;margin-top:3.5rem;padding-top:2rem;border-top:0.5px solid var(--border-dim);}
+.stat-num{font-family:var(--mono);font-size:1.4rem;font-weight:500;color:var(--orange);display:block;line-height:1.2;text-shadow:0 0 20px rgba(232,98,26,0.5);}
+.stat-label{font-size:12px;color:var(--text-mid);text-transform:uppercase;letter-spacing:0.08em;margin-top:0.2rem;}
+
+/* BUTTONS */
+.btn-primary{font-family:var(--mono);font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:#fff;background:var(--orange);border:1px solid var(--orange);padding:0.9rem 2rem;cursor:pointer;text-decoration:none;display:inline-block;transition:background 0.22s,box-shadow 0.22s;}
+.btn-primary:hover{background:var(--orange-bright);border-color:var(--orange-bright);box-shadow:0 0 28px rgba(232,98,26,0.6),0 0 8px rgba(232,98,26,0.3);}
+.btn-outline{font-family:var(--mono);font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-mid);background:transparent;border:1px solid var(--border-white);padding:0.9rem 2rem;cursor:pointer;text-decoration:none;display:inline-block;transition:color 0.22s,border-color 0.22s,box-shadow 0.22s;}
+.btn-outline:hover{color:var(--orange);border-color:var(--orange);box-shadow:0 0 16px rgba(232,98,26,0.2);}
+
+/* CV buttons */
+.btn-cv-solid{font-family:var(--mono);font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:#fff;background:var(--orange);border:1px solid var(--orange);padding:0.6rem 1.2rem;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:0.4rem;transition:background 0.22s,box-shadow 0.22s;width:100%;justify-content:center;}
+.btn-cv-solid:hover{background:var(--orange-bright);box-shadow:0 0 20px rgba(232,98,26,0.55);}
+.btn-cv-out{font-family:var(--mono);font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-mid);background:transparent;border:0.5px solid var(--border-white);padding:0.6rem 1.2rem;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:0.4rem;transition:color 0.22s,border-color 0.22s,box-shadow 0.22s;width:100%;justify-content:center;}
+.btn-cv-out:hover{color:var(--orange);border-color:var(--orange);box-shadow:0 0 16px rgba(232,98,26,0.2);}
+
+/* SECTION HEADER */
+.section-header{margin-bottom:3rem;}
+.section-tag{font-family:var(--mono);font-size:12px;color:var(--orange);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:0.75rem;display:flex;align-items:center;gap:0.75rem;}
+.section-tag::after{content:'';flex:1;height:0.5px;background:var(--border-dim);max-width:120px;}
+h2{font-family:var(--serif);font-size:clamp(2rem,4vw,3rem);font-weight:700;line-height:1.1;color:var(--text);}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:260px 1fr;gap:4rem;align-items:start;}
+.about-photo-wrap{display:flex;flex-direction:column;gap:1.25rem;align-items:center;}
+
+/* Circular photo with orange glow ring */
+.photo-circle-wrap{position:relative;width:220px;height:220px;}
+.photo-circle-wrap img{width:220px;height:220px;object-fit:cover;border-radius:50%;display:block;}
+.photo-circle-wrap::after{content:'';position:absolute;inset:-4px;border-radius:50%;border:2px solid var(--orange);opacity:0.5;}
+.photo-circle-glow{position:absolute;inset:-16px;border-radius:50%;background:radial-gradient(circle,rgba(232,98,26,0.12) 0%,transparent 70%);pointer-events:none;}
+
+.cv-btns{display:flex;flex-direction:column;gap:0.6rem;width:220px;}
+.cv-btn-label{font-family:var(--mono);font-size:11px;color:var(--text-muted);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.2rem;text-align:center;}
+
+.about-text p{color:var(--text-mid);margin-bottom:1rem;font-size:15px;line-height:1.85;}
+.about-text p strong{color:var(--text);font-weight:500;}
+.about-details{display:grid;gap:0;margin-top:2rem;}
+.detail-row{display:flex;gap:1rem;align-items:baseline;padding:0.8rem 0;border-bottom:0.5px solid var(--border-dim);}
+.detail-key{font-family:var(--mono);font-size:12px;color:var(--orange-dim);letter-spacing:0.1em;text-transform:uppercase;min-width:90px;flex-shrink:0;}
+.detail-val{color:var(--text-mid);font-size:14px;line-height:1.5;}
+
+/* PROJECTS */
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;}
+.project-card{background:var(--bg2);border:0.5px solid var(--border-dim);padding:2rem;position:relative;overflow:hidden;transition:border-color 0.25s,transform 0.2s,box-shadow 0.25s;}
+.project-card::before{content:'';position:absolute;top:0;left:0;width:2px;height:0;background:var(--orange);transition:height 0.3s;}
+.project-card:hover{border-color:var(--border);transform:translateY(-3px);box-shadow:0 8px 32px rgba(232,98,26,0.1);}
+.project-card:hover::before{height:100%;}
+.project-card.coming-soon{opacity:0.4;pointer-events:none;}
+.project-num{font-family:var(--mono);font-size:12px;color:var(--text-muted);margin-bottom:1.25rem;letter-spacing:0.1em;}
+.project-title{font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--text);margin-bottom:0.75rem;line-height:1.2;}
+.project-desc{color:var(--text-mid);font-size:14px;line-height:1.75;margin-bottom:1.5rem;}
+.project-tags{display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1.5rem;}
+.tag{font-family:var(--mono);font-size:10px;letter-spacing:0.08em;color:var(--orange);border:0.5px solid var(--orange-dim);padding:0.3rem 0.65rem;text-transform:uppercase;}
+.project-actions{display:flex;gap:0.75rem;flex-wrap:wrap;align-items:center;}
+.btn-details{font-family:var(--mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:#fff;background:var(--orange);border:1px solid var(--orange);padding:0.55rem 1.2rem;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:0.4rem;transition:background 0.22s,box-shadow 0.22s;}
+.btn-details:hover{background:var(--orange-bright);box-shadow:0 0 20px rgba(232,98,26,0.55);}
+.btn-github{font-family:var(--mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-mid);background:transparent;border:0.5px solid var(--border-white);padding:0.55rem 1.1rem;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:0.4rem;transition:color 0.2s,border-color 0.2s;}
+.btn-github:hover{color:var(--orange);border-color:var(--orange-dim);}
+
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.9);z-index:200;display:flex;align-items:center;justify-content:center;padding:1.5rem;opacity:0;pointer-events:none;transition:opacity 0.25s;}
+.modal-overlay.open{opacity:1;pointer-events:all;}
+.modal-box{background:#111;border:0.5px solid var(--border);max-width:820px;width:100%;max-height:90vh;overflow-y:auto;padding:2.5rem;position:relative;}
+.modal-close{position:absolute;top:1.25rem;right:1.25rem;background:none;border:none;color:var(--text-muted);font-size:1.3rem;cursor:pointer;font-family:var(--mono);transition:color 0.2s;line-height:1;}
+.modal-close:hover{color:var(--orange);}
+.modal-tag{font-family:var(--mono);font-size:12px;color:var(--orange);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:0.5rem;display:block;}
+.modal-title{font-family:var(--serif);font-size:1.75rem;font-weight:700;color:var(--text);margin-bottom:1.5rem;}
+.modal-sec{font-family:var(--mono);font-size:11px;color:var(--orange-dim);letter-spacing:0.15em;text-transform:uppercase;margin:1.75rem 0 0.75rem;padding-bottom:0.5rem;border-bottom:0.5px solid var(--border-dim);}
+.modal-text{color:var(--text-mid);font-size:14px;line-height:1.85;margin-bottom:0.75rem;}
+.modal-list{list-style:none;display:flex;flex-direction:column;gap:0.5rem;}
+.modal-list li{color:var(--text-mid);font-size:14px;padding-left:1.25rem;position:relative;line-height:1.7;}
+.modal-list li::before{content:'—';position:absolute;left:0;color:var(--orange-dim);}
+
+.slides-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0.75rem;margin-top:0.75rem;}
+.slide-thumb{border:0.5px solid var(--border-dim);overflow:hidden;cursor:pointer;transition:border-color 0.2s,transform 0.15s;aspect-ratio:16/10;position:relative;background:var(--bg3);}
+.slide-thumb:hover{border-color:var(--border);transform:scale(1.02);}
+.slide-inner{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:1rem;gap:0.5rem;}
+.slide-num{font-family:var(--mono);font-size:16px;color:var(--orange-dim);font-weight:500;}
+.slide-lbl{font-family:var(--mono);font-size:10px;color:var(--text-muted);text-align:center;letter-spacing:0.06em;line-height:1.5;}
+.slide-label-bar{font-family:var(--mono);font-size:10px;color:var(--text-muted);padding:0.35rem 0.5rem;background:rgba(0,0,0,0.5);border-top:0.5px solid var(--border-dim);text-align:center;letter-spacing:0.06em;position:absolute;bottom:0;left:0;right:0;}
+
+.cert-display{border:0.5px solid var(--border-dim);overflow:hidden;margin-top:0.75rem;max-width:360px;}
+.cert-display img{width:100%;display:block;}
+.cert-label{font-family:var(--mono);font-size:10px;color:var(--orange-dim);padding:0.5rem 0.75rem;background:var(--bg3);border-top:0.5px solid var(--border-dim);letter-spacing:0.1em;text-transform:uppercase;}
+
+.btn-modal-solid{font-family:var(--mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:#fff;background:var(--orange);border:1px solid var(--orange);padding:0.6rem 1.25rem;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:0.4rem;transition:background 0.22s,box-shadow 0.22s;}
+.btn-modal-solid:hover{background:var(--orange-bright);box-shadow:0 0 16px rgba(232,98,26,0.5);}
+.btn-modal-out{font-family:var(--mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-mid);background:transparent;border:0.5px solid var(--border-white);padding:0.6rem 1.25rem;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:0.4rem;transition:color 0.2s,border-color 0.2s;}
+.btn-modal-out:hover{color:var(--orange);border-color:var(--orange-dim);}
+
+/* Featured product buttons (Copperbot AI + WhatsApp CTA) */
+.btn-jbai{font-family:var(--mono);font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:#fff;background:linear-gradient(135deg,var(--orange),var(--orange-bright));border:1px solid var(--orange-bright);padding:0.9rem 2rem;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:0.4rem;transition:box-shadow 0.22s,transform 0.15s;box-shadow:0 0 0 1px rgba(232,98,26,0.35),0 0 18px rgba(232,98,26,0.35);}
+.btn-jbai:hover{box-shadow:0 0 0 1px rgba(255,122,48,0.6),0 0 26px rgba(232,98,26,0.6);transform:translateY(-1px);}
+.btn-jbai-modal{font-family:var(--mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:#fff;background:linear-gradient(135deg,var(--orange),var(--orange-bright));border:1px solid var(--orange-bright);padding:0.6rem 1.25rem;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:0.4rem;transition:box-shadow 0.22s,transform 0.15s;box-shadow:0 0 0 1px rgba(232,98,26,0.35),0 0 18px rgba(232,98,26,0.35);}
+.btn-jbai-modal:hover{box-shadow:0 0 0 1px rgba(255,122,48,0.6),0 0 26px rgba(232,98,26,0.6);transform:translateY(-1px);}
+.btn-whatsapp{font-family:var(--mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:#25d366;background:transparent;border:1px solid #25d366;padding:0.6rem 1.25rem;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:0.4rem;transition:background 0.22s,color 0.22s,box-shadow 0.22s;}
+.btn-whatsapp:hover{background:#25d366;color:#0d0d0d;box-shadow:0 0 20px rgba(37,211,102,0.45);}
+
+/* Certificates */
+.certs-grid{display:flex;gap:1.25rem;flex-wrap:wrap;}
+.cert-thumb{width:170px;border:0.5px solid var(--border-dim);cursor:pointer;overflow:hidden;transition:border-color 0.2s,transform 0.15s;background:var(--bg2);}
+.cert-thumb:hover{border-color:var(--border);transform:translateY(-3px);}
+.cert-thumb img{width:100%;height:115px;object-fit:cover;display:block;}
+.cert-thumb-label{font-family:var(--mono);font-size:10px;color:var(--text-muted);padding:0.5rem 0.6rem;text-align:center;letter-spacing:0.05em;border-top:0.5px solid var(--border-dim);line-height:1.4;}
+
+
+
+/* SKILLS */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem;}
+.skill-group{padding:1.75rem;background:var(--bg2);border:0.5px solid var(--border-dim);transition:border-color 0.2s;}
+.skill-group:hover{border-color:rgba(232,98,26,0.2);}
+.skill-group-title{font-family:var(--mono);font-size:12px;color:var(--orange);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:1.25rem;padding-bottom:0.75rem;border-bottom:0.5px solid var(--border-dim);}
+.skill-list{list-style:none;display:flex;flex-direction:column;gap:0.65rem;}
+.skill-list li{font-size:14px;color:var(--text-mid);display:flex;align-items:center;gap:0.65rem;}
+.skill-list li::before{content:'▸';color:var(--orange-dim);font-size:11px;flex-shrink:0;}
+
+/* EXPERIENCE */
+.exp-list{display:grid;gap:0;}
+.exp-item{display:grid;grid-template-columns:180px 1fr;gap:2rem;padding:2.5rem 0;border-bottom:0.5px solid var(--border-dim);align-items:start;}
+.exp-date{font-family:var(--mono);font-size:13px;color:var(--text-mid);}
+.exp-company{font-family:var(--mono);font-size:11px;color:var(--orange-dim);letter-spacing:0.1em;text-transform:uppercase;margin-top:0.4rem;}
+.exp-title-text{font-family:var(--serif);font-size:1.2rem;font-weight:700;color:var(--text);margin-bottom:0.75rem;}
+.exp-items{list-style:none;display:flex;flex-direction:column;gap:0.45rem;}
+.exp-items li{color:var(--text-mid);font-size:14px;padding-left:1rem;position:relative;line-height:1.65;}
+.exp-items li::before{content:'—';position:absolute;left:0;color:var(--orange-dim);}
+
+/* CONTACT */
+.contact-inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
+.contact-links{display:flex;flex-direction:column;gap:1rem;margin-top:2rem;}
+.contact-link{display:flex;align-items:center;gap:1rem;color:var(--text-mid);text-decoration:none;font-size:14px;padding:1rem 1.25rem;border:0.5px solid var(--border-dim);background:var(--bg2);transition:border-color 0.2s,color 0.2s,box-shadow 0.2s;}
+.contact-link:hover{border-color:var(--border);color:var(--orange);box-shadow:0 0 16px rgba(232,98,26,0.12);}
+.contact-link.email-copy{cursor:pointer;}
+.contact-icon{font-family:var(--mono);font-size:12px;color:var(--orange-dim);min-width:24px;text-align:center;}
+.contact-label{font-family:var(--mono);font-size:13px;letter-spacing:0.06em;text-transform:uppercase;}
+.contact-email-display{font-family:var(--mono);font-size:13px;color:var(--text-mid);user-select:all;letter-spacing:0.04em;}
+
+/* Toast */
+.toast{position:fixed;bottom:2rem;right:2rem;background:var(--orange);color:#fff;font-family:var(--mono);font-size:12px;letter-spacing:0.08em;padding:0.75rem 1.5rem;z-index:500;opacity:0;transform:translateY(10px);transition:opacity 0.3s,transform 0.3s;pointer-events:none;}
+.toast.show{opacity:1;transform:translateY(0);}
+
+footer{position:relative;z-index:1;border-top:0.5px solid var(--border-dim);padding:2rem 2.5rem;display:flex;justify-content:space-between;align-items:center;max-width:1100px;margin:0 auto;}
+footer p{font-family:var(--mono);font-size:12px;color:var(--text-muted);letter-spacing:0.06em;}
+footer span{color:var(--orange-dim);}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease;}
+.reveal.visible{opacity:1;transform:none;}
+
+@media(max-width:900px){
+  #hero{grid-template-columns:1fr;min-height:auto;padding-top:6rem;gap:1rem;}
+  .hero-right{order:-1;padding-top:2rem;}
+  .hero-photo-nobg{max-width:220px;}
+  nav{padding:1rem 1.25rem;}
+  .nav-links li:not(:last-child):not(:nth-last-child(2)){display:none;}
+  section{padding:5rem 1.25rem 3rem;}
+  h1{font-size:3rem;}
+  .about-grid{grid-template-columns:1fr;gap:2rem;}
+  .about-photo-wrap{align-items:flex-start;}
+  .contact-inner,.exp-item{grid-template-columns:1fr;gap:1.5rem;}
+  .hero-stats{gap:1.5rem;flex-wrap:wrap;}
+  .slides-grid{grid-template-columns:1fr;}
+  footer{flex-direction:column;gap:0.5rem;text-align:center;}
+}
+</style>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+<div class="toast" id="toast">✓ Email copiado</div>
+
+<nav>
+  <div class="nav-logo">JB.portfolio</div>
+  <ul class="nav-links">
+    <li><a href="#about" data-i18n="nav.about">Sobre mí</a></li>
+    <li><a href="#projects" data-i18n="nav.projects">Proyectos</a></li>
+    <li><a href="#certificates" data-i18n="nav.certs">Certificados</a></li>
+    <li><a href="#skills" data-i18n="nav.skills">Skills</a></li>
+    <li><a href="#experience" data-i18n="nav.experience">Experiencia</a></li>
+    <li><a href="#contact" data-i18n="nav.contact">Contacto</a></li>
+    <li><button class="lang-btn" id="langToggle">EN</button></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-left">
+    <div class="hero-tag" data-i18n="hero.tag">AI Engineer · Córdoba, Argentina</div>
+    <h1>Juan<br>Balbusso</span></h1>
+    <div class="hero-subtitle" data-i18n="hero.subtitle">Construyendo sistemas inteligentes</div>
+    <p class="hero-desc" data-i18n="hero.desc">AI Engineer en la intersección del desarrollo con LLMs, automatización y ciencia de datos. Combino herramientas prácticas con pensamiento sistémico para construir soluciones que realmente funcionan.</p>
+    <div class="hero-actions">
+      <a href="#projects" class="btn-primary" data-i18n="hero.cta1">Ver proyectos</a>
+      <a href="#contact" class="btn-outline" data-i18n="hero.cta2">Escribime</a>
+      <a href="https://copperbotai.com" target="_blank" class="btn-jbai" data-i18n="ml.jbai">⚡ Copperbot AI</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <span class="stat-num">B2</span>
+        <span class="stat-label" data-i18n="stats.english">Cambridge English</span>
+      </div>
+      <div>
+        <span class="stat-num">DS</span>
+        <span class="stat-label" data-i18n="stats.ds">Data Science cert.</span>
+      </div>
+      <div>
+        <span class="stat-num" style="font-size:0.95rem;padding-top:0.3rem;">AI Eng.</span>
+        <span class="stat-label" data-i18n="stats.ai">En formación activa</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right reveal">
+    <div class="hero-photo-wrap">
+      <div class="hero-frame"></div>
+      <img class="hero-photo-nobg" src="imagen Portfolio_2.png" alt="AI Engineer">
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-header reveal">
+    <div class="section-tag">001</div>
+    <h2 data-i18n="about.title">Sobre mí</h2>
+  </div>
+  <div class="about-grid">
+    <div class="about-photo-wrap reveal">
+      <div class="photo-circle-wrap">
+        <div class="photo-circle-glow"></div>
+        <img src="imagen_circular_recortada2.png" alt="Juan Balbusso">
+      </div>
+      <div class="cv-btns">
+        <div class="cv-btn-label" data-i18n="cv.label">Currículum</div>
+        <a href="https://drive.google.com/file/d/1CoBR2z_YtWhuBUN-NOIIYaBgCcy5SssJ/preview?usp=sharing" target="_blank" class="btn-cv-solid" data-i18n="cv.es">↗ CV Español</a>
+        <a href="https://drive.google.com/file/d/1MZMmvgQLlc3ZMHLBMNTNxnXS4uYeM9Fz/preview?usp=sharing" target="_blank" class="btn-cv-out" data-i18n="cv.en">↗ CV English</a>
+      </div>
+    </div>
+    <div>
+      <div class="about-text reveal">
+        <p data-i18n="about.p1">Soy un AI Engineer en formación continua, basado en Córdoba, Argentina, enfocado en construir <strong>sistemas de IA que resuelven problemas reales de negocio</strong> — no solo proyectos de práctica. Diseñé y mantengo en producción un bot de WhatsApp con IA para calificación de leads, con RAG, extracción de estado estructurado y un panel de administración propio.</p>
+        <p data-i18n="about.p2">Completé la certificación de Data Science en <strong>Digital House</strong> (en alianza con Mercado Libre y Globant), y me encuentro profundizando en <strong>LLM Engineering</strong> — RAG avanzado, fine-tuning, agentes autónomos.</p>
+        <p data-i18n="about.p3">Complementa mi perfil el <strong>Pareto Talent Bootcamp</strong>, un programa intensivo de 10 días como AI Executive Assistant con emprendedores de Estados Unidos. Busco roles de AI/ML Engineer o Automatización con IA donde pueda aportar soluciones prácticas con impacto medible.</p>
+      </div>
+      <div class="about-details reveal">
+        <div class="detail-row"><span class="detail-key" data-i18n="dk.loc">Ubicación</span><span class="detail-val">Córdoba, Argentina</span></div>
+        <div class="detail-row"><span class="detail-key" data-i18n="dk.eng">Inglés</span><span class="detail-val">B2 Cambridge First Certificate (Score: 165)</span></div>
+        <div class="detail-row"><span class="detail-key" data-i18n="dk.focus">Foco</span><span class="detail-val">LLM Engineering · AI Automation · Data Science</span></div>
+        <div class="detail-row"><span class="detail-key" data-i18n="dk.avail">Disponible</span><span class="detail-val" data-i18n="dk.availval">Remoto y oportunidades locales</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-header reveal">
+    <div class="section-tag">002</div>
+    <h2 data-i18n="proj.title">Proyectos</h2>
+  </div>
+  <div class="projects-grid">
+    <div class="project-card reveal">
+      <div class="project-num">01 / Process Automation</div>
+      <div class="project-title" data-i18n="p5.title">Automatización de Seguimiento de Costos — Fábrica</div>
+      <p class="project-desc" data-i18n="p5.desc">Portal de costos en producción, usado a diario por dos empresas industriales, que permite consultar y comparar costos mensuales en tiempo real. Cierre de mes por reconstrucción de totales reales, detección automática de ítems manuales, y trazabilidad completa de anulaciones. Validado con 28 tests automatizados.</p>
+      <div class="project-tags">
+        <span class="tag">Node.js</span><span class="tag">Google Cloud Functions</span><span class="tag">Google Sheets API</span><span class="tag">Apps Script</span><span class="tag">JavaScript</span>
+      </div>
+      <div class="project-actions">
+        <a class="btn-details" onclick="openModal('factory')" style="cursor:pointer;" data-i18n="pl.details">Ver detalles →</a>
+      </div>
+    </div>
+    <div class="project-card reveal">
+      <div class="project-num">02 / LLM Engineering</div>
+      <div class="project-title" data-i18n="p4.title">Agente Chispa — Bot de Calificación de Leads por WhatsApp</div>
+      <p class="project-desc" data-i18n="p4.desc">Bot de producción en uso real para Copperbot AI: atiende consultas por WhatsApp, califica leads con un checklist dinámico según el tipo de proyecto, y notifica automáticamente con resumen estructurado. Incluye panel admin propio estilo CRM con actualizaciones en vivo.</p>
+      <div class="project-tags">
+        <span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">OpenAI GPT-5.6</span><span class="tag">Twilio</span><span class="tag">PostgreSQL</span><span class="tag">RAG</span>
+      </div>
+      <div class="project-actions">
+        <a class="btn-details" onclick="openModal('jbai')" style="cursor:pointer;" data-i18n="pl.details">Ver detalles →</a>
+      </div>
+    </div>
+    <div class="project-card reveal">
+      <div class="project-num">03 / LLM Engineering</div>
+      <div class="project-title" data-i18n="p3.title">InsureLLM — RAG System</div>
+      <p class="project-desc" data-i18n="p3.desc">Sistema RAG de producción que permite consultar una base de conocimiento privada en lenguaje natural. Incluye query expansion, detección holística y un loop de autoevaluación con LLM-as-judge.</p>
+      <div class="project-tags">
+        <span class="tag">Python</span><span class="tag">OpenAI</span><span class="tag">ChromaDB</span><span class="tag">RAG</span><span class="tag">Gradio</span><span class="tag">Pydantic</span>
+      </div>
+      <div class="project-actions">
+        <a class="btn-details" onclick="openModal('rag')" style="cursor:pointer;" data-i18n="pl.details">Ver detalles →</a>
+        <a class="btn-github" href="https://github.com/JuanBalbusso/insurellm-rag" target="_blank">⌥ GitHub</a>
+      </div>
+    </div>
+    <div class="project-card reveal">
+      <div class="project-num">04 / Data Science</div>
+      <div class="project-title" data-i18n="p1.title">Predicción de Precios Airbnb — Buenos Aires</div>
+      <p class="project-desc" data-i18n="p1.desc">Proyecto end-to-end sobre 23.729 listings reales. EDA, feature engineering, comparación de 6 modelos ML + 3 arquitecturas de redes neuronales. Mejor modelo: GBR con R²=0.6759.</p>
+      <div class="project-tags">
+        <span class="tag">Python</span><span class="tag">Scikit-learn</span><span class="tag">TensorFlow</span><span class="tag">KMeans</span><span class="tag">Pandas</span>
+      </div>
+      <div class="project-actions">
+        <a class="btn-details" onclick="openModal('ds')" style="cursor:pointer;" data-i18n="pl.details">Ver detalles →</a>
+        <a class="btn-github" href="https://github.com/JuanBalbusso/airbnb-price-prediction-bsas" target="_blank">⌥ GitHub</a>
+      </div>
+    </div>
+    <div class="project-card reveal">
+      <div class="project-num">05 / AI Automation</div>
+      <div class="project-title" data-i18n="p2.title">Manus AI Webinar Launch — Pareto Bootcamp</div>
+      <p class="project-desc" data-i18n="p2.desc">Lanzamiento completo de webinar de 3 días: funnel de conversión en HighLevel, 3 workflows de automatización, 11 emails en voz del presentador, 70+ tareas en ClickUp.</p>
+      <div class="project-tags">
+        <span class="tag">HighLevel</span><span class="tag">ClickUp</span><span class="tag">n8n</span><span class="tag">Email Automation</span>
+      </div>
+      <div class="project-actions">
+        <a class="btn-details" onclick="openModal('pareto')" style="cursor:pointer;" data-i18n="pl.details">Ver detalles →</a>
+        <a class="btn-github" href="https://github.com/JuanBalbusso/pareto-talent-ai-bootcamp/tree/main" target="_blank">⌥ GitHub</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MODAL DS -->
+<div class="modal-overlay" id="modal-ds">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('ds')">✕</button>
+    <span class="modal-tag">04 / Data Science · Digital House</span>
+    <div class="modal-title" data-i18n="p1.title">Predicción de Precios Airbnb — Buenos Aires</div>
+    <div class="modal-sec" data-i18n="m.overview">Descripción del proyecto</div>
+    <p class="modal-text" data-i18n="m.ds.ov">Proyecto final de la certificación Data Science de Digital House (Mercado Libre & Globant). Análisis completo sobre datos reales de Airbnb Buenos Aires: 23.729 listings, 65 features originales, 4 etapas de pipeline, 6 modelos evaluados.</p>
+    <div class="modal-sec" data-i18n="m.highlights">Puntos clave</div>
+    <ul class="modal-list">
+      <li data-i18n="m.ds.h1">EDA completo: distribuciones, outliers, capping al P99, heatmap de correlación</li>
+      <li data-i18n="m.ds.h2">Feature engineering: StandardScaler, integración de 3 datasets por listing_id, variables derivadas</li>
+      <li data-i18n="m.ds.h3">ML: Ridge, Random Forest, GBR con GridSearchCV → R²=0.6759 (ganador)</li>
+      <li data-i18n="m.ds.h4">Deep Learning: 3 arquitecturas MLP con TensorFlow/Keras + KMeans clustering (k=3)</li>
+      <li data-i18n="m.ds.h5">Identificación proactiva de data leakage en avg_calendar_price (68.7% feature importance)</li>
+    </ul>
+    <div class="modal-sec" data-i18n="m.slides">Slides del proyecto</div>
+    <div class="slides-grid" id="ds-gallery"></div>
+    <div style="margin-top:1.5rem;display:flex;gap:0.75rem;flex-wrap:wrap;">
+      <a href="https://github.com/JuanBalbusso/airbnb-price-prediction-bsas" target="_blank" class="btn-modal-solid" data-i18n="ml.github">↗ Ver en GitHub</a>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL PARETO -->
+<div class="modal-overlay" id="modal-pareto">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('pareto')">✕</button>
+    <span class="modal-tag">05 / AI Automation · Pareto Talent Bootcamp · Abril 2026</span>
+    <div class="modal-title" data-i18n="p2.title">Manus AI Webinar Launch</div>
+    <div class="modal-sec" data-i18n="m.overview">Descripción del proyecto</div>
+    <p class="modal-text" data-i18n="m.pt.ov">Proyecto final del Pareto Talent Bootcamp (10 días intensivos). Lanzamiento completo de un webinar de 3 días para Nuno Tavares — estrategia, funnel, CRM, automatizaciones y contenido de marketing, todo ejecutado end-to-end.</p>
+    <div class="modal-sec" data-i18n="m.highlights">Puntos clave</div>
+    <ul class="modal-list">
+      <li data-i18n="m.pt.h1">Funnel de 3 pasos en HighLevel: landing page (7 secciones), VIP upsell ($97, 50 seats), thank-you page</li>
+      <li data-i18n="m.pt.h2">3 workflows de automatización: registro free, compra VIP, remarketing con lógica condicional</li>
+      <li data-i18n="m.pt.h3">11 emails redactados en inglés, en la voz del presentador, testeados en entorno real</li>
+      <li data-i18n="m.pt.h4">Gestión en ClickUp: 5 milestones, 11 listas, 70+ tareas con fechas y prioridades</li>
+      <li data-i18n="m.pt.h5">3 ICPs desarrollados, 3 anuncios de Facebook con copy persuasivo por perfil psicológico</li>
+    </ul>
+    <div class="modal-sec" data-i18n="m.slides">Slides del proyecto</div>
+    <div class="slides-grid" id="pareto-gallery"></div>
+    <div style="margin-top:1.5rem;display:flex;gap:0.75rem;flex-wrap:wrap;">
+      <a href="https://github.com/JuanBalbusso/pareto-talent-ai-bootcamp/tree/main" target="_blank" class="btn-modal-solid" data-i18n="ml.github">↗ Ver en GitHub</a>
+    </div>
+  </div>
+</div>
+
+
+<!-- MODAL FACTORY -->
+<div class="modal-overlay" id="modal-factory">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('factory')">✕</button>
+    <span class="modal-tag" data-i18n="m.factory.tag">01 / Process Automation · Producto propio · En producción</span>
+    <div class="modal-title" data-i18n="p5.title">Automatización de Seguimiento de Costos — Fábrica</div>
+    <div class="modal-sec" data-i18n="m.overview">Descripción del proyecto</div>
+    <p class="modal-text" data-i18n="m.factory.ov">La fábrica necesitaba poder ver en vivo cómo venía el mes: cuántos kilos se estaban produciendo y cuánto se estaba gastando en insumos, servicios y otros costos, sin depender de armar todo a mano en una planilla al final de cada mes. Para resolver eso, desarrollé un sistema conectado a Google Sheets donde cada operario carga lo que consume a medida que lo usa. Esa información se actualiza en vivo en un panel al que acceden los dueños y administradores de la fábrica, sin que nadie tenga que tocar la planilla manualmente.</p>
+    <div class="modal-sec" data-i18n="m.factory.stack">Stack: Node.js, Google Cloud Functions, Google Sheets API, Google Apps Script, HTML/CSS/JavaScript</div>
+    <div class="modal-sec" data-i18n="m.slides">Capturas del proyecto</div>
+    <div class="slides-grid" id="factory-gallery"></div>
+  </div>
+</div>
+
+<!-- MODAL RAG -->
+<div class="modal-overlay" id="modal-rag">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('rag')">✕</button>
+    <span class="modal-tag">03 / LLM Engineering · RAG System</span>
+    <div class="modal-title" data-i18n="p3.title">InsureLLM — RAG System</div>
+    <div class="modal-sec" data-i18n="m.overview">Descripción del proyecto</div>
+    <p class="modal-text" data-i18n="m.rag.ov">Sistema RAG de producción que permite consultar una base de conocimiento privada de seguros en lenguaje natural. Va más allá de un pipeline básico implementando tres mejoras clave: query expansion con conocimiento del dominio, detección holística de preguntas amplias, y un loop de autoevaluación con LLM-as-judge. Evaluado con 150 preguntas de prueba usando métricas MRR, nDCG y scoring automático.</p>
+    <div class="modal-sec" data-i18n="m.highlights">Puntos clave</div>
+    <ul class="modal-list">
+      <li data-i18n="m.rag.h1">Query expansion con conocimiento del dominio — resuelve el problema de acrónimos mal interpretados por el LLM</li>
+      <li data-i18n="m.rag.h2">Detección holística — identifica preguntas amplias y asegura que todos los documentos fuente estén representados</li>
+      <li data-i18n="m.rag.h3">Loop de autoevaluación — un LLM judge puntúa cada respuesta del 1 al 5 y reintenta con feedback si la calidad es insuficiente</li>
+      <li data-i18n="m.rag.h4">Evaluación rigurosa con 150 preguntas curadas usando MRR, nDCG y LLM-as-judge answer scoring</li>
+      <li data-i18n="m.rag.h5">Stack: Python, OpenAI, ChromaDB, LiteLLM, Pydantic, Gradio, uv</li>
+    </ul>
+    <div class="modal-sec" data-i18n="m.slides">Capturas del proyecto</div>
+    <div class="slides-grid" id="rag-gallery"></div>
+    <div style="margin-top:1.5rem;display:flex;gap:0.75rem;flex-wrap:wrap;">
+      <a href="https://github.com/JuanBalbusso/insurellm-rag" target="_blank" class="btn-modal-solid" data-i18n="ml.github">↗ Ver en GitHub</a>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL JBAI -->
+<div class="modal-overlay" id="modal-jbai">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('jbai')">✕</button>
+    <span class="modal-tag" data-i18n="m.jbai.tag">04 / LLM Engineering · Producto propio · En producción</span>
+    <div class="modal-title" data-i18n="p4.title">Agente Chispa — Bot de Calificación de Leads por WhatsApp</div>
+    <div class="modal-sec" data-i18n="m.overview">Descripción del proyecto</div>
+    <p class="modal-text" data-i18n="m.jbai.ov">Sistema de producción (no un proyecto de curso) que atiende WhatsApp de Copperbot AI 24/7: responde consultas usando RAG sobre una base de conocimiento propia, detecta el tipo de proyecto (chatbot/agente, Data Science, oferta laboral) y guía la conversación con un checklist específico hasta calificar el lead. Cuando confirma datos de contacto, arma y envía un resumen estructurado automáticamente, además de guardar cada conversación en Postgres para seguimiento.</p>
+    <p class="modal-text" data-i18n="m.jbai.ov2">Construí también un panel de administración propio (no uso ninguna herramienta de terceros) con diseño tipo WhatsApp Web/CRM: lista de conversaciones en vivo vía Server-Sent Events, respuesta manual, difusión de mensajes, favoritos, búsqueda y agenda de contactos.</p>
+    <div class="modal-sec" data-i18n="m.highlights">Puntos clave</div>
+    <ul class="modal-list">
+      <li data-i18n="m.jbai.h1">Backend en FastAPI + PostgreSQL, integrado con la API de WhatsApp Business (Twilio)</li>
+      <li data-i18n="m.jbai.h2">RAG con ChromaDB sobre base de conocimiento propia para respuestas grounded, no alucinadas</li>
+      <li data-i18n="m.jbai.h3">Extracción de estado estructurado por turno (Pydantic + structured outputs) para trackear el checklist sin perder el hilo en conversaciones largas</li>
+      <li data-i18n="m.jbai.h4">Manejo de audio (Whisper), imágenes y PDFs — el bot entiende lo que el cliente le mande</li>
+      <li data-i18n="m.jbai.h5">Resolví el desafío específico de WhatsApp Business API: mensajes iniciados por el negocio requieren Message Templates aprobados por Meta para esquivar la ventana de 24hs — diseñé el sistema para que esto no dependa de que el cliente escriba primero</li>
+      <li data-i18n="m.jbai.h6">Prompt engineering iterativo con testing adversarial real: guardrails contra jailbreaks progresivos y fuga de instrucciones internas, validados con conversaciones reales de prueba</li>
+      <li data-i18n="m.jbai.h7">Panel de administración propio con actualizaciones en tiempo real (SSE), sin depender de refrescos manuales</li>
+    </ul>
+    <div class="modal-sec" data-i18n="m.jbai.stack">Stack: Python, FastAPI, OpenAI API, Twilio, PostgreSQL, ChromaDB, Pydantic, Server-Sent Events, HTML/CSS/JS vanilla</div>
+    <div class="modal-sec" data-i18n="m.slides">Capturas del proyecto</div>
+    <div class="slides-grid" id="jbai-gallery"></div>
+    <div style="margin-top:1.5rem;display:flex;gap:0.75rem;flex-wrap:wrap;">
+      <a href="https://api.whatsapp.com/send/?phone=13512150324&text=Hola%21+Quiero+consultar+por+un+proyecto+de+IA+para+mi+negocio.&type=phone_number&app_absent=0" target="_blank" class="btn-whatsapp" data-i18n="ml.whatsapp">💬 Probar por WhatsApp</a>
+    </div>
+  </div>
+</div>
+
+<!-- CERTIFICATES -->
+<section id="certificates">
+  <div class="section-header reveal">
+    <div class="section-tag">003</div>
+    <h2 data-i18n="certs.title">Certificaciones</h2>
+  </div>
+  <div class="certs-grid" id="certs-gallery"></div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-header reveal">
+    <div class="section-tag">004</div>
+    <h2 data-i18n="sk.title">Skillset</h2>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-group reveal">
+      <div class="skill-group-title">LLM / AI Engineering</div>
+      <ul class="skill-list">
+        <li>Prompt Engineering avanzado</li><li>LLM APIs — OpenAI, Anthropic</li><li>RAG systems</li><li>Agentic workflows</li><li>LangChain</li>
+      </ul>
+    </div>
+    <div class="skill-group reveal">
+      <div class="skill-group-title">AI Automation</div>
+      <ul class="skill-list">
+        <li>n8n</li><li>HighLevel (GHL)</li><li>ClickUp</li><li>Zapier</li><li>Webhook & API integrations</li>
+      </ul>
+    </div>
+    <div class="skill-group reveal">
+      <div class="skill-group-title">Data Science / ML</div>
+      <ul class="skill-list">
+        <li>Python · Pandas · NumPy</li><li>Scikit-learn</li><li>TensorFlow / PyTorch</li><li>EDA & Feature Engineering</li><li>KMeans Clustering · PCA</li>
+      </ul>
+    </div>
+    <div class="skill-group reveal">
+      <div class="skill-group-title" data-i18n="sk.other">Herramientas & Otros</div>
+      <ul class="skill-list">
+        <li>Git & GitHub</li><li>GitHub Copilot · Cursor</li><li>Inglés B2 (Cambridge)</li><li data-i18n="sk.remote">Trabajo remoto</li><li data-i18n="sk.docs">Documentación técnica</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-header reveal">
+    <div class="section-tag">005</div>
+    <h2 data-i18n="ex.title">Experiencia & Formación</h2>
+  </div>
+  <div class="exp-list">
+    <div class="exp-item reveal">
+      <div><div class="exp-date">Agosto 2026</div><div class="exp-company">Udemy</div></div>
+      <div>
+        <div class="exp-title-text" data-i18n="ex.ud.t">AI Engineer Core Track</div>
+        <ul class="exp-items">
+          <li data-i18n="ex.ud.l1">LLMs frontier & open-source, RAG, QLoRA fine-tuning, agentes autónomos</li>
+          <li data-i18n="ex.ud.l2">HuggingFace, LangChain, Gradio — construcción de productos reales con IA</li>
+        </ul>
+      </div>
+    </div>
+    <div class="exp-item reveal">
+      <div><div class="exp-date">Abril 2026</div><div class="exp-company">Pareto Talent</div></div>
+      <div>
+        <div class="exp-title-text" data-i18n="ex.pt.t">AI Executive Assistant — 10-Day Bootcamp</div>
+        <ul class="exp-items">
+          <li data-i18n="ex.pt.l1">Programa intensivo orientado a trabajar con emprendedores de EE.UU.</li>
+          <li data-i18n="ex.pt.l2">Proyecto final: lanzamiento completo de webinar con funnel, CRM y email automation</li>
+          <li data-i18n="ex.pt.l3">Stack: HighLevel, ClickUp, Claude, Lovable, Vibe Coding, Zapier</li>
+        </ul>
+      </div>
+    </div>
+    <div class="exp-item reveal">
+      <div><div class="exp-date">2025–2026</div><div class="exp-company">Digital House</div></div>
+      <div>
+        <div class="exp-title-text" data-i18n="ex.dh.t">Certificación Data Science</div>
+        <ul class="exp-items">
+          <li data-i18n="ex.dh.l1">Programa en alianza con Mercado Libre y Globant</li>
+          <li data-i18n="ex.dh.l2">ML supervisado/no supervisado, redes neuronales, NLP, MLOps</li>
+          <li data-i18n="ex.dh.l3">Proyecto final: predicción de precios Airbnb BsAs — 6 modelos evaluados</li>
+        </ul>
+      </div>
+    </div>
+    <div class="exp-item reveal">
+      <div><div class="exp-date">Marzo 2026</div><div class="exp-company">IA Argentina · Digital House</div></div>
+      <div>
+        <div class="exp-title-text" data-i18n="ex.ia.t">IA en Programación — 22 hs.</div>
+        <ul class="exp-items">
+          <li data-i18n="ex.ia.l1">Integración de LLMs en flujos de desarrollo</li>
+          <li data-i18n="ex.ia.l2">GitHub Copilot, Claude, Cursor, Vercel, Replit, Bolt New</li>
+        </ul>
+      </div>
+    </div>
+    <div class="exp-item reveal">
+      <div><div class="exp-date">2023 — <span data-i18n="ex.present">Presente</span></div><div class="exp-company">UTN FRC</div></div>
+      <div>
+        <div class="exp-title-text" data-i18n="ex.utn.t">Ingeniería en Sistemas</div>
+        <ul class="exp-items">
+          <li data-i18n="ex.utn.l1">Base sólida en análisis matemático, álgebra, lógica y programación</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="reveal">
+      <div class="section-tag" style="margin-bottom:0.75rem">006</div>
+      <h2 data-i18n="ct.title">Construyamos algo.</h2>
+      <p style="margin-top:1rem;color:var(--text-mid);font-size:15px;line-height:1.85;" data-i18n="ct.desc">Abierto a oportunidades remotas y proyectos locales en Argentina. Siempre feliz de conectar sobre IA, automatización o data engineering.</p>
+    </div>
+    <div class="contact-links reveal">
+      <div class="contact-link email-copy" onclick="copyEmail()" title="Clic para copiar email">
+        <span class="contact-icon">@</span>
+        <span class="contact-email-display">jbalbusso@gmail.com</span>
+        <span style="font-family:var(--mono);font-size:10px;color:var(--text-muted);margin-left:auto;letter-spacing:0.06em;" data-i18n="ct.copy">copiar</span>
+      </div>
+      <a href="https://www.linkedin.com/in/juan-balbusso-5847aa21b/" target="_blank" class="contact-link">
+        <span class="contact-icon">in</span>
+        <span class="contact-label">LinkedIn</span>
+      </a>
+      <a href="https://github.com/JuanBalbusso" target="_blank" class="contact-link">
+        <span class="contact-icon">gh</span>
+        <span class="contact-label">GitHub — JuanBalbusso</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 <span>Juan Balbusso</span></p>
+  <p>Córdoba, Argentina <span>·</span> AI Engineer</p>
+</footer>
+
+<script>
+// ── TRANSLATIONS ──
+const T={es:{"nav.about":"Sobre mí","nav.projects":"Proyectos","nav.skills":"Skills","nav.experience":"Experiencia","nav.contact":"Contacto","hero.tag":"AI Engineer · Córdoba, Argentina","hero.subtitle":"Construyendo sistemas inteligentes","hero.desc":"AI Engineer en la intersección del desarrollo con LLMs, automatización y ciencia de datos. Combino herramientas prácticas con pensamiento sistémico para construir soluciones que realmente funcionan.","hero.cta1":"Ver proyectos","hero.cta2":"Escribime","stats.english":"Cambridge English","stats.ds":"Data Science cert.","stats.ai":"En formación activa","about.title":"Sobre mí","about.p1":"Soy un AI Engineer en formación continua, basado en Córdoba, Argentina, enfocado en construir <strong>sistemas de IA que resuelven problemas reales de negocio</strong> — no solo proyectos de práctica. Diseñé y mantengo en producción un bot de WhatsApp con IA para calificación de leads, con RAG, extracción de estado estructurado y un panel de administración propio.","about.p2":"Completé la certificación de Data Science en <strong>Digital House</strong> (en alianza con Mercado Libre y Globant), y me encuentro profundizando en <strong>LLM Engineering</strong> — RAG avanzado, fine-tuning, agentes autónomos.","about.p3":"Complementa mi perfil el <strong>Pareto Talent Bootcamp</strong>, un programa intensivo de 10 días como AI Executive Assistant con emprendedores de Estados Unidos. Busco roles de AI/ML Engineer o Automatización con IA donde pueda aportar soluciones prácticas con impacto medible.","cv.label":"Currículum","cv.es":"↗ CV Español","cv.en":"↗ CV English","dk.loc":"Ubicación","dk.eng":"Inglés","dk.focus":"Foco","dk.avail":"Disponible","dk.availval":"Remoto y oportunidades locales","proj.title":"Proyectos","p1.title":"Predicción de Precios Airbnb — Buenos Aires","p1.desc":"Proyecto end-to-end sobre 23.729 listings reales. EDA, feature engineering, comparación de 6 modelos ML + 3 arquitecturas de redes neuronales. Mejor modelo: GBR con R²=0.6759.","p2.title":"Manus AI Webinar Launch — Pareto Bootcamp","p2.desc":"Lanzamiento completo de webinar de 3 días: funnel de conversión en HighLevel, 3 workflows de automatización, 11 emails en voz del presentador, 70+ tareas en ClickUp.","p3.title":"InsureLLM — RAG System","p3.desc":"Sistema RAG de producción que permite consultar una base de conocimiento privada en lenguaje natural. Incluye query expansion, detección holística y loop de autoevaluación con LLM-as-judge.","pl.details":"Ver detalles →","m.overview":"Descripción del proyecto","m.highlights":"Puntos clave","m.slides":"Slides del proyecto","m.cert":"Certificado","m.certlabel":"Certificate of Completion · Pareto Talent · Abril 17, 2026","m.ds.ov":"Proyecto final de la certificación Data Science de Digital House (Mercado Libre & Globant). Análisis completo sobre datos reales de Airbnb Buenos Aires: 23.729 listings, 65 features originales, 4 etapas de pipeline, 6 modelos evaluados.","m.ds.h1":"EDA completo: distribuciones, outliers, capping al P99, heatmap de correlación","m.ds.h2":"Feature engineering: StandardScaler, integración de 3 datasets por listing_id, variables derivadas","m.ds.h3":"ML: Ridge, Random Forest, GBR con GridSearchCV → R²=0.6759 (ganador)","m.ds.h4":"Deep Learning: 3 arquitecturas MLP con TensorFlow/Keras + KMeans clustering (k=3)","m.ds.h5":"Identificación proactiva de data leakage en avg_calendar_price (68.7% feature importance)","m.pt.ov":"Proyecto final del Pareto Talent Bootcamp (10 días intensivos). Lanzamiento completo de un webinar de 3 días para Nuno Tavares — estrategia, funnel, CRM, automatizaciones y contenido de marketing, todo ejecutado end-to-end.","m.pt.h1":"Funnel de 3 pasos en HighLevel: landing page (7 secciones), VIP upsell ($97, 50 seats), thank-you page","m.pt.h2":"3 workflows de automatización: registro free, compra VIP, remarketing con lógica condicional","m.pt.h3":"11 emails redactados en inglés, en la voz del presentador, testeados en entorno real","m.pt.h4":"Gestión en ClickUp: 5 milestones, 11 listas, 70+ tareas con fechas y prioridades","m.pt.h5":"3 ICPs desarrollados, 3 anuncios de Facebook con copy persuasivo por perfil psicológico","ml.github":"↗ Ver en GitHub","ml.pdf":"↓ Descargar presentación","ml.pdf2":"↓ Descargar proyecto","sk.title":"Skillset","sk.other":"Herramientas & Otros","sk.remote":"Trabajo remoto","sk.docs":"Documentación técnica","ex.title":"Experiencia & Formación","ex.present":"Presente","ex.pt.t":"AI Executive Assistant — 10-Day Bootcamp","ex.pt.l1":"Programa intensivo orientado a trabajar con emprendedores de EE.UU.","ex.pt.l2":"Proyecto final: lanzamiento completo de webinar con funnel, CRM y email automation","ex.pt.l3":"Stack: HighLevel, ClickUp, Claude, Lovable, Vibe Coding, Zapier","ex.dh.t":"Certificación Data Science","ex.dh.l1":"Programa en alianza con Mercado Libre y Globant","ex.dh.l2":"ML supervisado/no supervisado, redes neuronales, NLP, MLOps","ex.dh.l3":"Proyecto final: predicción de precios Airbnb BsAs — 6 modelos evaluados","ex.ia.t":"IA en Programación — 22 hs.","ex.ia.l1":"Integración de LLMs en flujos de desarrollo","ex.ia.l2":"GitHub Copilot, Claude, Cursor, Vercel, Replit, Bolt New","ex.ud.t":"Mastering Generative AI & LLMs","ex.ud.l1":"LLMs frontier & open-source, RAG, QLoRA fine-tuning, agentes autónomos","ex.ud.l2":"HuggingFace, LangChain, Gradio — construcción de productos reales con IA","ex.utn.t":"Ingeniería en Sistemas","ex.utn.l1":"Base sólida en análisis matemático, álgebra, lógica y programación","ct.title":"Construyamos algo.","ct.desc":"Abierto a oportunidades remotas y proyectos locales en Argentina. Siempre feliz de conectar sobre IA, automatización o data engineering.","ct.copy":"copiar",
+"m.rag.ov":"Sistema RAG de producción que permite consultar una base de conocimiento privada de seguros en lenguaje natural. Va más allá de un pipeline básico implementando tres mejoras clave: query expansion con conocimiento del dominio, detección holística de preguntas amplias, y un loop de autoevaluación con LLM-as-judge. Evaluado con 150 preguntas de prueba usando métricas MRR, nDCG y scoring automático.",
+"m.rag.h1":"Query expansion con conocimiento del dominio — resuelve el problema de acrónimos mal interpretados por el LLM",
+"m.rag.h2":"Detección holística — identifica preguntas amplias y asegura que todos los documentos fuente estén representados",
+"m.rag.h3":"Loop de autoevaluación — un LLM judge puntúa cada respuesta del 1 al 5 y reintenta con feedback si la calidad es insuficiente",
+"m.rag.h4":"Evaluación rigurosa con 150 preguntas curadas usando MRR, nDCG y LLM-as-judge answer scoring",
+"m.rag.h5":"Stack: Python, OpenAI, ChromaDB, LiteLLM, Pydantic, Gradio, uv",
+"p4.title":"Agente Chispa — Bot de Calificación de Leads por WhatsApp",
+"p4.desc":"Bot de producción en uso real para Copperbot AI: atiende consultas por WhatsApp, califica leads con un checklist dinámico según el tipo de proyecto, y notifica automáticamente con resumen estructurado. Incluye panel admin propio estilo CRM con actualizaciones en vivo.",
+"ml.jbai":"⚡ Copperbot AI",
+"ml.whatsapp":"💬 Probar por WhatsApp",
+"m.jbai.tag":"02 / LLM Engineering · Producto propio · En producción",
+"m.jbai.ov":"Sistema de producción (no un proyecto de curso) que atiende WhatsApp de Copperbot AI 24/7: responde consultas usando RAG sobre una base de conocimiento propia, detecta el tipo de proyecto (chatbot/agente, Data Science, oferta laboral) y guía la conversación con un checklist específico hasta calificar el lead. Cuando confirma datos de contacto, arma y envía un resumen estructurado automáticamente, además de guardar cada conversación en Postgres para seguimiento.",
+"m.jbai.ov2":"Construí también un panel de administración propio (no uso ninguna herramienta de terceros) con diseño tipo WhatsApp Web/CRM: lista de conversaciones en vivo vía Server-Sent Events, respuesta manual, difusión de mensajes, favoritos, búsqueda y agenda de contactos.",
+"m.jbai.h1":"Backend en FastAPI + PostgreSQL, integrado con la API de WhatsApp Business (Twilio)",
+"m.jbai.h2":"RAG con ChromaDB sobre base de conocimiento propia para respuestas grounded, no alucinadas",
+"m.jbai.h3":"Extracción de estado estructurado por turno (Pydantic + structured outputs) para trackear el checklist sin perder el hilo en conversaciones largas",
+"m.jbai.h4":"Manejo de audio (Whisper), imágenes y PDFs — el bot entiende lo que el cliente le mande",
+"m.jbai.h5":"Resolví el desafío específico de WhatsApp Business API: mensajes iniciados por el negocio requieren Message Templates aprobados por Meta para esquivar la ventana de 24hs — diseñé el sistema para que esto no dependa de que el cliente escriba primero",
+"m.jbai.h6":"Prompt engineering iterativo con testing adversarial real: guardrails contra jailbreaks progresivos y fuga de instrucciones internas, validados con conversaciones reales de prueba",
+"m.jbai.h7":"Panel de administración propio con actualizaciones en tiempo real (SSE), sin depender de refrescos manuales",
+"m.jbai.stack":"Stack: Python, FastAPI, OpenAI API, Twilio, PostgreSQL, ChromaDB, Pydantic, Server-Sent Events, HTML/CSS/JS vanilla",
+"nav.certs":"Certificados",
+"certs.title":"Certificaciones",
+"p5.title":"Automatización de Seguimiento de Costos — Fábrica",
+"p5.desc":"Portal de costos en producción, usado a diario por dos empresas industriales, que permite consultar y comparar costos mensuales en tiempo real. Cierre de mes por reconstrucción de totales reales, detección automática de ítems manuales, y trazabilidad completa de anulaciones. Validado con 28 tests automatizados.",
+"m.factory.tag":"01 / Process Automation · Producto propio · En producción",
+"m.factory.ov":"La fábrica necesitaba poder ver en vivo cómo venía el mes: cuántos kilos se estaban produciendo y cuánto se estaba gastando en insumos, servicios y otros costos, sin depender de armar todo a mano en una planilla al final de cada mes. Para resolver eso, desarrollé un sistema conectado a Google Sheets donde cada operario carga lo que consume a medida que lo usa. Esa información se actualiza en vivo en un panel al que acceden los dueños y administradores de la fábrica, sin que nadie tenga que tocar la planilla manualmente.",
+"m.factory.stack":"Stack: Node.js, Google Cloud Functions, Google Sheets API, Google Apps Script, HTML/CSS/JavaScript"},
+en:{"nav.about":"About","nav.projects":"Projects","nav.skills":"Skills","nav.experience":"Experience","nav.contact":"Contact","hero.tag":"AI Engineer · Córdoba, Argentina","hero.subtitle":"Building intelligent systems","hero.desc":"AI Engineer at the intersection of LLM development, automation, and data science. Combining hands-on tooling with a systems-thinking approach to build solutions that actually work.","hero.cta1":"View projects","hero.cta2":"Get in touch","stats.english":"Cambridge English","stats.ds":"Data Science cert.","stats.ai":"Actively training","about.title":"About me","about.p1":"I'm an AI Engineer in continuous training, based in Córdoba, Argentina, focused on building <strong>AI systems that solve real business problems</strong> — not just practice projects. I designed and currently maintain a production WhatsApp AI bot for lead qualification, featuring RAG, structured state extraction, and a custom admin panel.","about.p2":"I completed the Data Science certification at <strong>Digital House</strong> (in partnership with Mercado Libre and Globant), and I'm currently deepening my <strong>LLM Engineering</strong> skills — advanced RAG, fine-tuning, autonomous agents.","about.p3":"Rounding out my profile is the <strong>Pareto Talent Bootcamp</strong>, an intensive 10-day program working as an AI Executive Assistant with U.S.-based entrepreneurs. I'm looking for AI/ML Engineer or AI Automation roles where I can deliver practical solutions with measurable impact.","cv.label":"Resume","cv.es":"↗ CV Español","cv.en":"↗ CV English","dk.loc":"Location","dk.eng":"English","dk.focus":"Focus","dk.avail":"Available","dk.availval":"Remote & local opportunities","proj.title":"Projects","p1.title":"Airbnb Price Prediction — Buenos Aires","p1.desc":"End-to-end project on 23,729 real listings. EDA, feature engineering, comparison of 6 ML models + 3 neural network architectures. Best model: GBR with R²=0.6759.","p2.title":"Manus AI Webinar Launch — Pareto Bootcamp","p2.desc":"Complete 3-day webinar launch: conversion funnel in HighLevel, 3 automation workflows, 11 emails in the presenter's voice, 70+ tasks in ClickUp.","p3.title":"InsureLLM — RAG System","p3.desc":"Production-style RAG system for querying a private knowledge base in natural language. Features domain-aware query expansion, holistic detection, and a self-evaluation loop with LLM-as-judge.","pl.details":"See details →","m.overview":"Project overview","m.highlights":"Key highlights","m.slides":"Project slides","m.cert":"Certificate","m.certlabel":"Certificate of Completion · Pareto Talent · April 17, 2026","m.ds.ov":"Final project for the Digital House Data Science certification (Mercado Libre & Globant). Complete analysis on real Airbnb Buenos Aires data: 23,729 listings, 65 original features, 4-stage pipeline, 6 models evaluated.","m.ds.h1":"Full EDA: distributions, outliers, P99 capping, correlation heatmap","m.ds.h2":"Feature engineering: StandardScaler, 3-dataset join by listing_id, engineered variables","m.ds.h3":"ML: Ridge, Random Forest, GBR with GridSearchCV → R²=0.6759 (winner)","m.ds.h4":"Deep Learning: 3 MLP architectures with TensorFlow/Keras + KMeans clustering (k=3)","m.ds.h5":"Proactive identification of data leakage in avg_calendar_price (68.7% feature importance)","m.pt.ov":"Final project of the Pareto Talent Bootcamp (10 intensive days). Complete launch of a 3-day webinar for Nuno Tavares — strategy, funnel, CRM, automations, and marketing content, all executed end-to-end.","m.pt.h1":"3-step funnel in HighLevel: landing page (7 sections), VIP upsell ($97, 50 seats), thank-you page","m.pt.h2":"3 automation workflows: free registration, VIP purchase, remarketing with conditional logic","m.pt.h3":"11 emails in English, written in the presenter's voice, tested in live HighLevel environment","m.pt.h4":"ClickUp project management: 5 milestones, 11 lists, 70+ tasks with due dates and priorities","m.pt.h5":"3 ICPs developed, 3 Facebook ad mockups with persuasive copy by psychological profile","ml.github":"↗ View on GitHub","ml.pdf":"↓ Download slides","ml.pdf2":"↓ Download project","sk.title":"Skillset","sk.other":"Tools & Other","sk.remote":"Remote work","sk.docs":"Technical documentation","ex.title":"Experience & Education","ex.present":"Present","ex.pt.t":"AI Executive Assistant — 10-Day Bootcamp","ex.pt.l1":"Intensive program for working with U.S. entrepreneurs as an AI-powered EA","ex.pt.l2":"Final project: complete webinar launch with funnel, CRM, and email automation","ex.pt.l3":"Stack: HighLevel, ClickUp, Claude, Lovable, Vibe Coding, Zapier","ex.dh.t":"Data Science Certification","ex.dh.l1":"Mercado Libre & Globant partnership program","ex.dh.l2":"Supervised/unsupervised ML, neural networks, NLP, MLOps","ex.dh.l3":"Final project: Airbnb BsAs price prediction — 6 models evaluated","ex.ia.t":"AI in Programming — 22 hrs.","ex.ia.l1":"LLM integration into development workflows","ex.ia.l2":"GitHub Copilot, Claude, Cursor, Vercel, Replit, Bolt New","ex.ud.t":"Mastering Generative AI & LLMs","ex.ud.l1":"Frontier & open-source LLMs, RAG, QLoRA fine-tuning, autonomous agents","ex.ud.l2":"HuggingFace, LangChain, Gradio — building real AI products","ex.utn.t":"Systems Engineering","ex.utn.l1":"Strong foundation in mathematical analysis, algebra, logic, and programming","ct.title":"Let's build something.","ct.desc":"Open to remote opportunities and local projects in Argentina. Always happy to connect about AI, automation, or data engineering.","ct.copy":"copy",
+"m.rag.ov":"Production-style RAG system that lets users query a private insurance company knowledge base using natural language. Goes beyond a basic pipeline with three key improvements: domain-aware query expansion, holistic detection, and a self-evaluation loop with LLM-as-judge. Evaluated across 150 curated test questions using MRR, nDCG, and automatic answer scoring.",
+"m.rag.h1":"Domain-aware query expansion — solves the problem of LLMs misinterpreting domain-specific acronyms",
+"m.rag.h2":"Holistic detection — identifies broad questions and ensures all source documents are represented in context",
+"m.rag.h3":"Self-evaluation loop — an LLM judge scores each answer from 1 to 5 and triggers a retry with specific feedback if quality is insufficient",
+"m.rag.h4":"Rigorous evaluation across 150 curated questions using MRR, nDCG, and LLM-as-judge answer scoring",
+"m.rag.h5":"Stack: Python, OpenAI, ChromaDB, LiteLLM, Pydantic, Gradio, uv",
+"p4.title":"Agente Chispa — WhatsApp Lead Qualification Bot",
+"p4.desc":"Production bot actively used by Copperbot AI: handles WhatsApp inquiries, qualifies leads with a dynamic checklist based on project type, and automatically notifies with a structured summary. Includes a custom CRM-style admin panel with live updates.",
+"ml.jbai":"⚡ Copperbot AI",
+"ml.whatsapp":"💬 Try it on WhatsApp",
+"m.jbai.tag":"02 / LLM Engineering · Own product · In production",
+"m.jbai.ov":"Production system (not a course project) that handles Copperbot AI's WhatsApp 24/7: answers inquiries using RAG over a proprietary knowledge base, detects project type (chatbot/agent, Data Science, job offer), and guides the conversation with a specific checklist until the lead is qualified. Once contact details are confirmed, it automatically builds and sends a structured summary, while also logging every conversation in Postgres for follow-up.",
+"m.jbai.ov2":"I also built a custom admin panel (no third-party tools) with a WhatsApp Web/CRM-style design: live conversation list via Server-Sent Events, manual reply, broadcast messaging, favorites, search, and contact scheduling.",
+"m.jbai.h1":"FastAPI + PostgreSQL backend, integrated with the WhatsApp Business API (Twilio)",
+"m.jbai.h2":"RAG with ChromaDB over a proprietary knowledge base for grounded, non-hallucinated answers",
+"m.jbai.h3":"Per-turn structured state extraction (Pydantic + structured outputs) to track the checklist without losing context in long conversations",
+"m.jbai.h4":"Handles audio (Whisper), images, and PDFs — the bot understands whatever the client sends",
+"m.jbai.h5":"Solved a specific WhatsApp Business API challenge: business-initiated messages (notifications, summaries) require Meta-approved Message Templates to bypass the 24h window — designed the system so this doesn't depend on the client texting first",
+"m.jbai.h6":"Iterative prompt engineering with real adversarial testing: guardrails against progressive jailbreaks and internal instruction leakage, validated with real test conversations",
+"m.jbai.h7":"Custom admin panel with real-time updates (SSE), with no reliance on manual refreshes",
+"m.jbai.stack":"Stack: Python, FastAPI, OpenAI API, Twilio, PostgreSQL, ChromaDB, Pydantic, Server-Sent Events, vanilla HTML/CSS/JS",
+"nav.certs":"Certificates",
+"certs.title":"Certifications",
+"p5.title":"Factory Expense Tracking Automation",
+"p5.desc":"Production cost-tracking portal used daily by two industrial companies to check and compare monthly costs in real time. Month-end closing that reconstructs actual totals, automatic detection of items needing manual entry, and full traceability of voided records. Validated with 28 automated tests.",
+"m.factory.tag":"01 / Process Automation · Own product · In production",
+"m.factory.ov":"The factory needed to see in real time how the month was going: how many kilos were being produced and how much was being spent on supplies, services, and other costs, without relying on manually building everything in a spreadsheet at the end of each month. To solve this, I built a system connected to Google Sheets where each operator logs what they consume as they use it. That information updates live in a dashboard that owners and administrators access, with no one needing to touch the spreadsheet manually.",
+"m.factory.stack":"Stack: Node.js, Google Cloud Functions, Google Sheets API, Google Apps Script, HTML/CSS/JavaScript"}};
+
+let lang='es';
+const langBtn=document.getElementById('langToggle');
+function applyLang(l){lang=l;langBtn.textContent=l==='es'?'EN':'ES';document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');if(T[l][k]!==undefined)el.innerHTML=T[l][k];});}
+langBtn.addEventListener('click',()=>applyLang(lang==='es'?'en':'es'));
+
+// ── EMAIL COPY ──
+function copyEmail(){
+  navigator.clipboard.writeText('jbalbusso@gmail.com').then(()=>{
+    const t=document.getElementById('toast');
+    t.textContent= lang==='es'?'✓ Email copiado':'✓ Email copied';
+    t.classList.add('show');
+    setTimeout(()=>t.classList.remove('show'),2500);
+  });
+}
+
+// ── SLIDES ──
+const dsSlides=[
+  {l:'Portada — Predicción de Precios',  img:'slides/ds/slide1.png'},
+  {l:'El Problema de Negocio',           img:'slides/ds/slide2.png'},
+  {l:'EDA — Análisis Exploratorio',      img:'slides/ds/slide3.png'},
+  {l:'Outliers — Capping P99',           img:'slides/ds/slide4.png'},
+  {l:'Modelos ML',                        img:'slides/ds/slide5.png'},
+  {l:'Feature Importance — Data Leakage',img:'slides/ds/slide6.png'},
+  {l:'Clustering KMeans',                img:'slides/ds/slide7.png'},
+  {l:'Redes Neuronales MLP',             img:'slides/ds/slide8.png'},
+  {l:'Curvas de Entrenamiento',          img:'slides/ds/slide9.png'},
+  {l:'Real vs Predicho — MLP',           img:'slides/ds/slide10.png'},
+  {l:'Comparación Final',                img:'slides/ds/slide11.png'},
+  {l:'Conclusiones',                     img:'slides/ds/slide12.png'}
+];
+const paretoSlides=[
+  {l:'Portada — Manus AI Webinar',       img:'slides/bootcamp/slide1.png'},
+  {l:'Investigación — Voz & Competidores',img:'slides/bootcamp/slide2.png'},
+  {l:'Project Tracking — ClickUp',       img:'slides/bootcamp/slide3.png'},
+  {l:'El Funnel — 3 Pasos',              img:'slides/bootcamp/slide4.png'},
+  {l:'Pipeline CRM',                     img:'slides/bootcamp/slide5.png'},
+  {l:'Workflows — 3 Automatizaciones',   img:'slides/bootcamp/slide6.png'},
+  {l:'Ads — 3 Ángulos',                  img:'slides/bootcamp/slide7.png'},
+  {l:'Resultados Esperados',             img:'slides/bootcamp/slide8.png'}
+];
+function buildGallery(id, slides){
+  const el = document.getElementById(id);
+  if(!el) return;
+  el.innerHTML = slides.map((s, i) => `
+    <div class="slide-thumb" onclick="openLB('${id}',${i})">
+      ${s.img
+        ? `<img src="${s.img}" style="width:100%;height:100%;object-fit:cover;display:block;">`
+        : `<div class="slide-inner"><span class="slide-num">${String(i+1).padStart(2,'0')}</span><span class="slide-lbl">${s.l}</span></div>`
+      }
+      <div class="slide-label-bar">${s.l}</div>
+    </div>`
+  ).join('');
+}
+buildGallery('ds-gallery',dsSlides);
+buildGallery('pareto-gallery',paretoSlides);
+const ragSlides=[
+  {l:'Chatbot Interface', img:'slides/insurellm-rag/ChatBot.png'},
+  {l:'Dashboard',         img:'slides/insurellm-rag/Dashboard.png'}
+];
+buildGallery('rag-gallery',ragSlides);
+const jbaiSlides=[
+  {l:'Chat en vivo — WhatsApp', img:'slides/jb-ai-solutions/slide1.png'},
+  {l:'Conversación completa',   img:'slides/jb-ai-solutions/slide2.png'},
+  {l:'Lead calificado — Panel', img:'slides/jb-ai-solutions/slide3.png'}
+];
+buildGallery('jbai-gallery',jbaiSlides);
+const factorySlides=[
+  {l:'Inicio de sesión',                        img:'slides/Factory expense tracking automation/slide1.png'},
+  {l:'Dashboard de costos — vista general',      img:'slides/Factory expense tracking automation/slide2.png'},
+  {l:'Dashboard — comparación de meses cerrados',img:'slides/Factory expense tracking automation/slide3.png'},
+  {l:'Registro de cargas',                       img:'slides/Factory expense tracking automation/slide4.png'},
+  {l:'Portal de operarios',                      img:'slides/Factory expense tracking automation/slide5.png'},
+  {l:'Notificación de carga por mail',           img:'slides/Factory expense tracking automation/slide6.png'}
+];
+buildGallery('factory-gallery',factorySlides);
+
+const certSlides=[
+  {l:'AI Engineer Core Track — Udemy', img:'AI_Engineer.jpg', url:'https://www.udemy.com/certificate/UC-54f454bf-3e90-4b6a-b5b2-129f20739005/'},
+  {l:'Data Science — Digital House',   img:'Data_Science_Certificate.png'},
+  {l:'Pareto Talent Bootcamp',         img:'certificate-ParetoTalent.png', url:'https://my-certificates.com/certificates/69e29db6c80f15f272f7072a'}
+];
+function buildCertGallery(id, certs){
+  const el = document.getElementById(id);
+  if(!el) return;
+  el.innerHTML = certs.map((c, i) => '<div class="cert-thumb" onclick="openLB(\'certs-gallery\',' + i + ')"><img src="' + c.img + '" alt="' + c.l + '"><div class="cert-thumb-label">' + c.l + '</div></div>').join('');
+}
+buildCertGallery('certs-gallery', certSlides);
+
+// ── LIGHTBOX ──
+let lbG=[],lbI=0;
+function openLB(gid, idx){
+  if(gid==='ds-gallery') lbG=dsSlides;
+  else if(gid==='pareto-gallery') lbG=paretoSlides;
+  else if(gid==='rag-gallery') lbG=ragSlides;
+  else if(gid==='jbai-gallery') lbG=jbaiSlides;
+  else if(gid==='factory-gallery') lbG=factorySlides;
+  else lbG=certSlides;
+  lbI=idx;
+  updateLB();
+  document.getElementById('lightbox').classList.add('open');
+}
+function updateLB(){
+  const s=lbG[lbI];
+  const content=document.getElementById('lb-content');
+  if(s.img){
+    content.innerHTML=`<img src="${s.img}" style="max-width:90vw;max-height:80vh;object-fit:contain;border:0.5px solid rgba(255,255,255,0.08);display:block;">`;
+  } else {
+    content.innerHTML=`<div style="font-family:var(--mono);font-size:13px;color:#c4bdb4;padding:2rem;text-align:center;">${s.l}</div>`;
+  }
+  document.getElementById('lb-counter').textContent=(lbI+1)+' / '+lbG.length;
+  const linkEl=document.getElementById('lb-link');
+  if(s.url){
+    const label = lang==='es' ? '↗ Ver certificado original' : '↗ View original certificate';
+    linkEl.innerHTML='<a href="'+s.url+'" target="_blank" style="font-family:var(--mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:#e8621a;text-decoration:none;border:0.5px solid #8a3a10;padding:0.45rem 1.1rem;">'+label+'</a>';
+  } else {
+    linkEl.innerHTML='';
+  }
+}
+function navLB(d){lbI=(lbI+d+lbG.length)%lbG.length;updateLB();}
+function closeLB(){document.getElementById('lightbox').classList.remove('open');}
+
+// ── MODAL ──
+function openModal(id){document.getElementById('modal-'+id).classList.add('open');document.body.style.overflow='hidden';}
+function closeModal(id){document.getElementById('modal-'+id).classList.remove('open');document.body.style.overflow='';}
+document.querySelectorAll('.modal-overlay').forEach(m=>m.addEventListener('click',e=>{if(e.target===m){m.classList.remove('open');document.body.style.overflow='';};}));
+
+// ── CANVAS — Geometric shapes (like reference) ──
+const canvas=document.getElementById('canvas');
+const ctx=canvas.getContext('2d');
+let W,H,shapes=[];
+
+const SHAPE_TYPES=['plus','circle','triangle','cross','dot','square'];
+
+function mkShape(){
+  return{
+    x:Math.random()*W, y:Math.random()*H,
+    vx:(Math.random()-.5)*0.35, vy:(Math.random()-.5)*0.35,
+    type:SHAPE_TYPES[Math.floor(Math.random()*SHAPE_TYPES.length)],
+    size:Math.random()*7+3,
+    alpha:Math.random()*0.25+0.07,
+    rotation:Math.random()*Math.PI*2,
+    rotSpeed:(Math.random()-.5)*0.015
+  };
+}
+
+function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;}
+
+function drawShape(p){
+  ctx.save();
+  ctx.translate(p.x,p.y);
+  ctx.rotate(p.rotation);
+  ctx.strokeStyle=`rgba(255,255,255,${p.alpha})`;
+  ctx.fillStyle=`rgba(255,255,255,${p.alpha})`;
+  ctx.lineWidth=1;
+  const s=p.size;
+
+  switch(p.type){
+    case 'plus':
+      ctx.beginPath();ctx.moveTo(-s,0);ctx.lineTo(s,0);ctx.moveTo(0,-s);ctx.lineTo(0,s);ctx.stroke();
+      break;
+    case 'cross':
+      ctx.beginPath();ctx.moveTo(-s,-s);ctx.lineTo(s,s);ctx.moveTo(s,-s);ctx.lineTo(-s,s);ctx.stroke();
+      break;
+    case 'circle':
+      ctx.beginPath();ctx.arc(0,0,s,0,Math.PI*2);ctx.stroke();
+      break;
+    case 'dot':
+      ctx.beginPath();ctx.arc(0,0,s*0.35,0,Math.PI*2);ctx.fill();
+      break;
+    case 'triangle':
+      ctx.beginPath();ctx.moveTo(0,-s);ctx.lineTo(s*0.87,s*0.5);ctx.lineTo(-s*0.87,s*0.5);ctx.closePath();ctx.stroke();
+      break;
+    case 'square':
+      ctx.strokeRect(-s*.6,-s*.6,s*1.2,s*1.2);
+      break;
+  }
+  ctx.restore();
+}
+
+function init(){resize();shapes=Array.from({length:90},mkShape);}
+
+function draw(){
+  ctx.clearRect(0,0,W,H);
+  shapes.forEach(p=>{
+    p.x+=p.vx; p.y+=p.vy; p.rotation+=p.rotSpeed;
+    if(p.x<-20)p.x=W+20; if(p.x>W+20)p.x=-20;
+    if(p.y<-20)p.y=H+20; if(p.y>H+20)p.y=-20;
+    drawShape(p);
+  });
+  requestAnimationFrame(draw);
+}
+
+init();draw();window.addEventListener('resize',init);
+
+// ── SCROLL REVEAL ──
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+
+<div class="lightbox" id="lightbox" onclick="if(event.target===this)closeLB()" style="position:fixed;inset:0;background:rgba(0,0,0,0.95);z-index:300;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.2s;">
+  <style>.lightbox.open{opacity:1!important;pointer-events:all!important;}</style>
+  <button onclick="closeLB()" style="position:absolute;top:1.5rem;right:1.5rem;color:#8a8278;font-family:var(--mono);font-size:1.25rem;cursor:pointer;background:none;border:none;transition:color 0.2s;" onmouseover="this.style.color='#e8621a'" onmouseout="this.style.color=''">✕</button>
+  <button onclick="navLB(-1)" style="position:absolute;top:50%;left:1.5rem;transform:translateY(-50%);font-family:var(--mono);font-size:1.8rem;color:#e8621a;cursor:pointer;background:rgba(0,0,0,0.5);border:0.5px solid rgba(255,255,255,0.07);padding:0.5rem 0.9rem;">‹</button>
+  <div id="lb-content" style="display:flex;align-items:center;justify-content:center;"></div>
+  <div style="position:absolute;bottom:1.25rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:0.6rem;">
+    <div id="lb-link"></div>
+    <div id="lb-counter" style="font-family:var(--mono);font-size:11px;color:#6e6860;letter-spacing:0.1em;"></div>
+  </div>
+  <button onclick="navLB(1)" style="position:absolute;top:50%;right:1.5rem;transform:translateY(-50%);font-family:var(--mono);font-size:1.8rem;color:#e8621a;cursor:pointer;background:rgba(0,0,0,0.5);border:0.5px solid rgba(255,255,255,0.07);padding:0.5rem 0.9rem;">›</button>
+</div>
+
+</body>
+</html>
